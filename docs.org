@@ -53,7 +53,7 @@
      GET /oauth2/v2/userinfo HTTP/1.1
      Host: www.googleapis.com
      Content-length: 0
-     Authorization: Bearer ya29.GlsABqo0h39HIGVZS3nJ_ZxU73fIfK929JGLXve2CCFJXv89HNyGY-tJZAONtfJCo1nktLYMXENSfvmZKhPehprQki1ZmluG6iHNTWwSEyHTg8NIfSmDavrH9hQd
+     Authorization: Bearer ya29.glsabqo0h39higvzs3nj_zxu73fifk929jglxve2ccfrxv89hnyly-tjzaontfjco1nktlymxensfvmzkhpehprqkb1zmlug6ihntwwseyhtg8nifsmdavrh9hqd
 
      // Response
      HTTP/1.1 200 OK
@@ -79,7 +79,7 @@
        "locale": "en", 
        "email": "kdixle2@uic.edu", 
        "given_name": "Kyle", 
-       "id": "100740817124865040618", 
+       "id": "000000000000000000000", 
        "hd": "uic.edu", 
        "verified_email": true
      }
@@ -377,22 +377,21 @@
      }
      #+END_SRC
 **** [FUTURE] =[PROTECTED][ADMIN] changeScoring(token, assignmentId, scoreBreakdown)=
-     ot my prNoblem if the rubric is broken
-     his may Trequire a change of the deployment package
-*****Assets   
-***** DynamoD*B:
-****** Read: *
-      - token s-table
-      - users -table
-****** Write:*
-      - assig nments-table
-     +BEGIN_S#RC javascript
-             {
-      "assign mentId": assignmentId,
-      "deadli ne": $deadline
-             }
-     +END_SRC#
-
+     Not my problem if the rubric is broken
+     This may require a change of the deployment package
+***** Assets   
+****** DynamoDB:
+******* Read:
+       - tokens-table
+       - users-table
+******* Write:
+       - assignments-table
+     #+BEGIN_SRC javascript
+     {
+       "assignmentId": assignmentId,
+       "deadline": $deadline
+     }
+     #+END_SRC
 **** [FUTURE] =[PROTECTED][ADMIN] changeDeploymentPackage(token, assignmentId, deploymentPackage)=
      Not my problem if the deployment package is broken. This is a future reach goal
      This may require a change of the scoring
