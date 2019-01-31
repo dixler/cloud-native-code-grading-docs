@@ -1,0 +1,728 @@
+#+AUTHOR: Kyle Dixler
+* Backend
+** Technologies
+*** OAuth 2.0
+**** Playground
+     targets:
+     https://www.googleapis.com/auth/userinfo.email
+     https://www.googleapis.com/auth/userinfo.profile
+
+     https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=https://developers.google.com/oauthplayground&prompt=consent&response_type=code&client_id=407408718192.apps.googleusercontent.com&scope=https://www.googleapis.com/auth/userinfo.email+https://www.googleapis.com/auth/userinfo.profile&access_type=offline
+     send the returned token to the application to request a token
+     request:
+     #+BEGIN_SRC javascript
+     // Request
+     POST /oauth2/v4/token HTTP/1.1
+     Host: www.googleapis.com
+     Content-length: 277
+     content-type: application/x-www-form-urlencoded
+     user-agent: google-oauth-playground
+     code=4%2FAAC8yZdfe98kiiX6R-lojj5Dqe4HHtGkDPMlaFobNBn1ai4aHpmRhpyZvD49xxsyHJaD5of_1zf50I7KyMZeXyk&redirect_uri=https%3A%2F%2Fdevelopers.google.com%2Foauthplayground&client_id=407408718192.apps.googleusercontent.com&client_secret=************&scope=&grant_type=authorization_code
+
+     // Response
+     HTTP/1.1 200 OK
+     Content-length: 1389
+     X-xss-protection: 1; mode=block
+     X-content-type-options: nosniff
+     Transfer-encoding: chunked
+     Expires: Mon, 01 Jan 1990 00:00:00 GMT
+     Vary: Origin, X-Origin
+     Server: GSE
+     -content-encoding: gzip
+     Pragma: no-cache
+     Cache-control: no-cache, no-store, max-age=0, must-revalidate
+     Date: Sun, 22 Jul 2018 16:26:54 GMT
+     X-frame-options: SAMEORIGIN
+     Alt-svc: quic=":443"; ma=2592000; v="44,43,39,35"
+     Content-type: application/json; charset=UTF-8
+     {
+       // This is unique to the application
+       "access_token": "ya29.GlsABqo0h39HIGVZS3nJ_ZxU73fIfK929JGLXve2CCFJXv89HNyGY-tJZAONtfJCo1nktLYMXENSfvmZKhPehprQki1ZmluG6iHNTWwSEyHTg8NIfSmDavrH9hQd", 
+       "token_type": "Bearer", 
+       "expires_in": 3600, 
+       "refresh_token": "1/w2Ix95nfsB8x7dc_og4PhtvqxKKs10t2LW4-xvoZmxU", 
+       // This is unique to the user
+       "id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImM2YWY3Y2FhMDg5NWZkMDFlNzc4ZGNlYWE3YTc5ODgzNDdkOGYyNWMifQ.eyJhenAiOiI0MDc0MDg3MTgxOTIuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJhdWQiOiI0MDc0MDg3MTgxOTIuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJzdWIiOiIxMDA3NDA4MTcxMjQ4NjUwNDA2MTgiLCJoZCI6InVpYy5lZHUiLCJlbWFpbCI6ImtkaXhsZTJAdWljLmVkdSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJhdF9oYXNoIjoiengxT2dGeURTVV9JMlRLRl9WenRBUSIsImV4cCI6MTUzMjI4MDQxNCwiaXNzIjoiaHR0cHM6Ly9hY2NvdW50cy5nb29nbGUuY29tIiwiaWF0IjoxNTMyMjc2ODE0LCJuYW1lIjoiS3lsZSBEaXhsZXIiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDUuZ29vZ2xldXNlcmNvbnRlbnQuY29tLy1CZnZfY3NOUWRHWS9BQUFBQUFBQUFBSS9BQUFBQUFBQUFBQS9BQW5uWTdyUWZfVmE5NDFpZnZYMFMxdFViYl9qU2x6OVBRL3M5Ni1jL3Bob3RvLmpwZyIsImdpdmVuX25hbWUiOiJLeWxlIiwiZmFtaWx5X25hbWUiOiJEaXhsZXIiLCJsb2NhbGUiOiJlbiJ9.H9LJ8do7VqUepbYI4t2Mr1yrvTQJYvUnoy7XGdbXTdKUhHYG7VKpoWd76MkT77oujXQhpMJ60c_BYhCo8EpxufM75gYhVWhak4L1MOWIeHKwJFfRxu9kWVsgBtsAwsUKe4J4ZswA06bLQP10i9GB1Fjo0bimRaTfFyWTDdO_UfpMVw1QvsdPFUqhTGAmqHY3dBU3sNBMZcI3LtFCUVAlCR3-YFDsOvklyhRrwNV_oqDh6HoCL4IJGViI6LMpAdSJjNElFzitlEXUV8ET2Fw1FsAxs-PPKNmYVgI1119yYKmmm_KQJoZI5vwIZtzZKdzh6pnV7SRlWtcKASh-ynr0lg"
+     }
+     #+END_SRC
+     Now we can use the token to request user data. The token may time out, but we can use it on our end.
+     We use the credential to retrieve user data:
+     - email(uic email)
+     #+BEGIN_SRC javascript
+     // Request
+     GET /oauth2/v2/userinfo HTTP/1.1
+     Host: www.googleapis.com
+     Content-length: 0
+     Authorization: Bearer ya29.GlsABqo0h39HIGVZS3nJ_ZxU73fIfK929JGLXve2CCFJXv89HNyGY-tJZAONtfJCo1nktLYMXENSfvmZKhPehprQki1ZmluG6iHNTWwSEyHTg8NIfSmDavrH9hQd
+
+     // Response
+     HTTP/1.1 200 OK
+     Content-length: 331
+     X-xss-protection: 1; mode=block
+     Content-location: https://www.googleapis.com/oauth2/v2/userinfo
+     X-content-type-options: nosniff
+     Transfer-encoding: chunked
+     Expires: Mon, 01 Jan 1990 00:00:00 GMT
+     Vary: Origin, X-Origin
+     Server: GSE
+     -content-encoding: gzip
+     Pragma: no-cache
+     Cache-control: no-cache, no-store, max-age=0, must-revalidate
+     Date: Sun, 22 Jul 2018 16:29:04 GMT
+     X-frame-options: SAMEORIGIN
+     Alt-svc: quic=":443"; ma=2592000; v="44,43,39,35"
+     Content-type: application/json; charset=UTF-8
+     {
+       "family_name": "Dixler", 
+       "name": "Kyle Dixler", 
+       "picture": "https://lh5.googleusercontent.com/-Bfv_csNQdGY/AAAAAAAAAAI/AAAAAAAAAAA/AAnnY7rQf_Va941ifvX0S1tUbb_jSlz9PQ/mo/photo.jpg", 
+       "locale": "en", 
+       "email": "kdixle2@uic.edu", 
+       "given_name": "Kyle", 
+       "id": "100740817124865040618", 
+       "hd": "uic.edu", 
+       "verified_email": true
+     }
+     #+END_SRC
+     Then we can store the cookie into our tokens-table and return it for our user to put in localStorage and to use as their token
+*** Amazon Web Services
+**** DynamoDB
+**** S3
+**** Lambda
+**** API Gateway
+**** EC2
+** Storage
+*** DynamoDB
+**** tokens-table
+     Stores the session credentials of our users
+     put a lifecycle policy for these tokens
+     #+BEGIN_SRC javascript
+       //"token": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImM2YWY3Y2FhMDg5NWZkMDFlNzc4ZGNlYWE3YTc5ODgzNDdkOGYyNWMifQ.eyJhenAiOiI0MDc0MDg3MTgxOTIuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJhdWQiOiI0MDc0MDg3MTgxOTIuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJzdWIiOiIxMDA3NDA4MTcxMjQ4NjUwNDA2MTgiLCJoZCI6InVpYy5lZHUiLCJlbWFpbCI6ImtkaXhsZTJAdWljLmVkdSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJhdF9oYXNoIjoiengxT2dGeURTVV9JMlRLRl9WenRBUSIsImV4cCI6MTUzMjI4MDQxNCwiaXNzIjoiaHR0cHM6Ly9hY2NvdW50cy5nb29nbGUuY29tIiwiaWF0IjoxNTMyMjc2ODE0LCJuYW1lIjoiS3lsZSBEaXhsZXIiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDUuZ29vZ2xldXNlcmNvbnRlbnQuY29tLy1CZnZfY3NOUWRHWS9BQUFBQUFBQUFBSS9BQUFBQUFBQUFBQS9BQW5uWTdyUWZfVmE5NDFpZnZYMFMxdFViYl9qU2x6OVBRL3M5Ni1jL3Bob3RvLmpwZyIsImdpdmVuX25hbWUiOiJLeWxlIiwiZmFtaWx5X25hbWUiOiJEaXhsZXIiLCJsb2NhbGUiOiJlbiJ9.H9LJ8do7VqUepbYI4t2Mr1yrvTQJYvUnoy7XGdbXTdKUhHYG7VKpoWd76MkT77oujXQhpMJ60c_BYhCo8EpxufM75gYhVWhak4L1MOWIeHKwJFfRxu9kWVsgBtsAwsUKe4J4ZswA06bLQP10i9GB1Fjo0bimRaTfFyWTDdO_UfpMVw1QvsdPFUqhTGAmqHY3dBU3sNBMZcI3LtFCUVAlCR3-YFDsOvklyhRrwNV_oqDh6HoCL4IJGViI6LMpAdSJjNElFzitlEXUV8ET2Fw1FsAxs-PPKNmYVgI1119yYKmmm_KQJoZI5vwIZtzZKdzh6pnV7SRlWtcKASh-ynr0lg",
+     {
+       "token": "251",
+       "netid": "kdixle2"
+     }
+     #+END_SRC
+**** users-table
+     Stores user credentials to allow for secrets, token is the tokenized user name generated 
+     from the first time the user entered salted with their netid, we don't need to query the 
+     board to reverse the tokenization.
+     #+BEGIN_SRC javascript
+     {
+       "netid": "kdixle2",
+       "admin": true,
+       "uin": "666666666",
+       "tokenid": "c1f8b18730737be44ea82b2a9ffd887729bd9ded1960e4b38bf49492fb0d1fa3"
+     }
+     #+END_SRC
+**** submissions-table
+     Store all of the submissions across every assignment
+     #+BEGIN_SRC javascript
+      // the asset id is generated using the submission time and the shasum of the submission
+     {
+       "assetId": "c1f8b18730737be44ea82b2a9ffd887729bd9ded1960e4b38bf49492fb0d1fa3",
+       "netid": "kdixle2",
+       "assignmentId": 0,
+       "submissionDate": "2018-07-02 11:59",
+       "state": "SUBMITTED"|"SCORED",
+       "score": 100,
+       "scoreBreakdown": {
+         "some_field": 100,
+         "other_field": 100,
+         "my_field": 100,
+         "field": 100,
+         "feld": 100
+       }
+     }
+     #+END_SRC
+**** scoreboard-table
+     we will be using the tokenid as the HASH key and the assignmentId as the RANGE key
+     Store the highest scores for each student
+     tokenid should be unique to each assignmentId
+     #+BEGIN_SRC javascript
+     {
+       // the asset id is generated using the submission time and the shasum of the submission
+       "assetId": "c1f8b18730737be44ea82b2a9ffd887729bd9ded1960e4b38bf49492fb0d1fa3",
+       "assignmentId": 0,
+       "tokenid": "c1f8b18730737be44ea82b2a9ffd887729bd9ded1960e4b38bf49492fb0d1fa3",
+       "submissionDate": "2018-07-02 11:59",
+       "state": "SUBMITTED"|"SCORED",
+       "score": 100,
+       "scoreBreakdown": {
+         "some_field": 100,
+         "other_field": 100,
+         "my_field": 100,
+         "field": 100,
+         "feld": 100
+       }
+     }
+     #+END_SRC
+**** assignments-table
+     Store the data for each assignment
+     using [-1] as the metadata index
+     #+BEGIN_SRC javascript
+     {
+       "assignmentId": 0,
+       "assignmentName": "Linked Lists",
+       "deadline": "2018-07-02 11:59",
+       "score": 100,
+       "scoreBreakdown": {
+         // these are user defined and are up to the user to keep coherent
+         "some_field": 100,
+         "other_field": 100,
+         "my_field": 100,
+         "field": 100,
+         "feld": 100
+       }
+     }
+     #+END_SRC
+**** configuration-table
+     Store resource names and mappings to make this solution more generic
+     #+BEGIN_SRC javascript
+     {
+       "CRN": 44322,
+       "metadata": {
+         "instructor": "John Lillis",
+         "course_number": "251",
+         "course_name": "Data Structures"
+       },
+       "s3": {
+         "documents-bucket": "$bucketname"
+       },
+       "dynamodb": {
+         "users-table": "$tablename",
+         "assignments-table": "$tablename",
+         "submissions-table": "$tablename"
+       }
+       "sqs": {
+         "grading-queue": "$queuename"
+       }
+    }
+    
+     #+END_SRC
+*** S3
+**** documents-bucket
+     Stores everyone's submissions and the testing deploy packages.
+     Namespace appears like this
+
+       s3://documents-bucket.name/assignment.assignmentId/...
+
+***** Deployment Packages
+     Deploy Packages are stored at:
+     #+BEGIN_SRC javascript
+     {$configuration-table[$CRN]["s3"]["documents-bucket"]}/{$assignments-table[$assignmentId]}/"deploymentPackage.zip"
+     // uic-documents-bucket-44322-fa2018/0/deploymentPackage.zip
+     #+END_SRC
+
+***** Assets
+     Assets are stored at:
+     #+BEGIN_SRC javascript
+     {$configuration-table[$CRN]["s3"]["documents-bucket"]}/{$assignments-table[$assignmentId].assignmentId}/{sha256hash(asset+$submissionTime+$random)}
+     // uic-documents-bucket-44322-fa2018/0/c1f8b18730737be44ea82b2a9ffd887729bd9ded1960e4b38bf49492fb0d1fa3
+     // the lookup in the assignments table is done as a check to see if the assignment is valid otherwise an exception will be thrown
+     #+END_SRC
+
+*** SQS
+**** [FIFO] grading-queue
+     stores the list of assets to be graded.
+     using content based deduplication:
+     - Our assetIds should be unique thus our messages will be unique so we 
+       should use extra protections
+***** data format:
+    #+BEGIN_SRC javascript
+    {
+      "assetId": "{assetId}",
+      "assetBucket": "{documents-bucket-name}",
+      "assignmentId": "{assignmentId}"
+    }
+    #+END_SRC
+
+** APIs
+*** Auth
+**** [PUBLIC] login(authorizationCode) -> bearerToken
+     Responsibility to get a new login token and associate it with the current user.
+     If that user doesn't exist, make them exist and populate their users-table entry using the hash of the current time
+***** Assets
+****** DynamoDB:
+******* Read:
+       - users-table
+******* Write:
+       - tokens-table
+       - users-table
+**** [PROTECTED] continueSession(token) -> bool
+     Responsibility to verify that the token is legitimate
+***** Assets
+****** DynamoDB:
+******* Read:
+       - tokens-table
+******* Write:
+**** [PROTECTED] logout(token) -> null
+***** Assets
+****** DynamoDB:
+******* Read:
+******* Write:
+       - tokens-table
+*** Upload
+**** [PROTECTED] submitAssignment(token, assignmentId, asset)
+***** Assets
+****** DynamoDB:
+******* Read:
+       - tokens-table (validation)
+       - assignments-table (validation)
+       - users-table (retrieve netid)
+******* Write:
+       - submissions-table
+       provisions the submission-table entry to be modified later
+     #+BEGIN_SRC javascript
+       // the asset id is generated using the submission time and the shasum of the submission
+     {
+       "assetId": "c1f8b18730737be44ea82b2a9ffd887729bd9ded1960e4b38bf49492fb0d1fa3",
+       "assignmentId": 0,
+       "netid": "kdixle2",
+       "state": "SUBMITTED"
+       "score": 0,
+       "scoreBreakdown": {}
+     }
+     #+END_SRC
+       INDIRECTLY -> scoreboard-table
+         Workflow may modify this table if this is the new highest score
+        #+BEGIN_SRC python
+        if score > currentScore:
+          updateScoreboard(netid, assetId, assignmentId)
+        #+END_SRC
+****** S3:
+******* Read:
+******* Write:
+       - documents-bucket/$assignmentId/{sha256sum(asset+submissionTime+random)}
+****** SQS:
+******* Read:
+******* Write:
+       - grading-queue
+**** [PROTECTED][ADMIN] createAssignment(token, assignmentName, deploymentPackage, deadline, scoreBreakdown)
+     Need to make sure to validate that the user is an admin
+***** Assets
+****** DynamoDB:
+******* Read:
+       - tokens-table(validation isUser)
+       - users-table(validation isAdmin)
+******* Write:
+       - assignments-table
+     #+BEGIN_SRC javascript
+     {
+       "assignmentId": {GENERATED},
+       "assignmentName": $assignmentName,
+       "deadline": $deadline,
+       "score": $scoreBreakdown
+     }
+     // call params, base64 encoded
+     {
+    	"token": "251",
+       "assignmentName": "Linked Lists",
+       "deadline": "2018-12-02 11:59",
+       "deploymentPackage": "I2luY2x1ZGUgPHN0ZGlvLmg+CiNpbmNsdWRlIDxzdGRsaWIuaD4KCmludCBtYWluKCl7CiAgIHByaW50ZigiSGVsbG8gV29ybGQhXG4iKTsKICAgcmV0dXJuIDA7Cn0K",
+       "scoreBreakdown": {
+       	"score": 100,
+        "scoreBreakdown": {
+          "some_field": 100,
+          "other_field": 100,
+          "my_field": 100,
+          "field": 100,
+          "feld": 100
+        	}
+        }
+     }
+     #+END_SRC
+****** S3:
+******* Read:
+******* Write:
+       - documents-bucket/{assignments-table[assignmentId]}/deploymentPackage.zip
+**** [PRIVATE] enterScore(assetId, assignmentId, score, scoreBreakdown)
+     Writes a score in for the submission.
+***** Assets
+****** DynamoDB:
+******* Read:
+******* Write:
+       - submissions-table
+    
+*** Modify Scoreboard
+**** [PRIVATE] updateScoreboard(netid, assetId, assignmentId)
+***** Trigger: submissions-table dynamodb stream[MODIFY]
+      When the submissions-table is modified,
+       if the $SUBMISSION.state is 'SCORED', then
+         if the $SUBMISSION.score is larger than the current scoreboard submission for getTokenId($SUBMISSION.netid)
+           replace current scoreboard entry with tokenizedSubmission($ENTRY)
+
+      its the highest of 
+***** Assets
+****** DynamoDB:
+******* Read:
+       - submissions-table
+******* Write:
+       - scoreboard-table
+    
+*** Modify Assignment
+**** [PROTECTED][ADMIN] changeDeadline(token, assignmentId, deadline)
+     What if it's being extended after it's due?
+***** Assets
+****** DynamoDB:
+******* Read:
+       - tokens-table
+       - users-table
+******* Write:
+       - assignments-table
+     #+BEGIN_SRC javascript
+     {
+       "assignmentId": assignmentId,
+       "deadline": $deadline
+     }
+     #+END_SRC
+**** [FUTURE] =[PROTECTED][ADMIN] changeScoring(token, assignmentId, scoreBreakdown)=
+     ot my prNoblem if the rubric is broken
+     his may Trequire a change of the deployment package
+*****Assets   
+***** DynamoD*B:
+****** Read: *
+      - token s-table
+      - users -table
+****** Write:*
+      - assig nments-table
+     +BEGIN_S#RC javascript
+             {
+      "assign mentId": assignmentId,
+      "deadli ne": $deadline
+             }
+     +END_SRC#
+
+**** [FUTURE] =[PROTECTED][ADMIN] changeDeploymentPackage(token, assignmentId, deploymentPackage)=
+     Not my problem if the deployment package is broken. This is a future reach goal
+     This may require a change of the scoring
+***** Assets
+****** DynamoDB:
+******* Read:
+        - tokens-table(validate isUser)
+        - users-table(validate isAdmin)
+******* Write:
+****** S3:
+******* Read:
+******* Write:
+       - documents-bucket/{assignments-table[assignmentId]}/deploymentPackage.zip
+
+*** Query Database
+**** [PROTECTED] getSubmissions(token, assignmentId) -> [submission, ...]
+***** Assets
+****** DynamoDB:
+******* Read:
+       - tokens-table
+       - assignments-table(validate)
+       - submissions-table
+******* Write:
+**** [PROTECTED] getScoreboard(token, assignmentId) -> [tokenizedSubmission, ...]
+***** Assets
+****** DynamoDB:
+******* Read:
+       - tokens-table
+       - assignments-table
+       - scoreboard-table
+******* Write:
+**** [PROTECTED] getAssignments(token) -> [assignment, ...]
+***** Assets
+****** DynamoDB:
+******* Read:
+       - tokens-table
+       - assignments-table
+******* Write:
+**** [PROTECTED] getUser(token) -> user
+     get user's credentials
+     this will be used to determine if the session token is legitimate
+     returns {} if invalid
+***** Assets
+****** DynamoDB:
+******* Read:
+       - tokens-table
+       - users-table
+******* Write:
+*** Grading Workflow
+**** [PRIVATE][SECRET] quarantine(bool, instance-id)
+     Set quarantine on the calling asset...
+     This endpoint/function is essentially the sudo button that we have to hide
+***** Assets
+****** EC2:
+******* Read:
+******* Write:
+        - attach-role to instance
+        - detach-role from instance
+
+** Library Utilities
+   We use environment variables since they are consistent given that we use terraform to provision
+*** [LOCAL] getNetId(token) -> string
+***** Assets
+****** DynamoDB:
+******* Read:
+       - tokens-table
+******* Write:
+*** [LOCAL] getTokenId(netid) -> string
+    getTokenId by retrieving the tokenizedId of this user
+**** Constraints:
+     Tokenizing by hashing the netid and uin fails since the netid is public information 
+     and the uin is within 100,000,000, so it takes 100,000,000 local guesses to brute 
+     force 1 user's token.
+     Due to this, I've decided to assign tokens by hashing the time that they first logged in 
+     and some salt if necessary
+***** Assets
+****** DynamoDB:
+******* Read:
+       - users-table
+******* Write:
+*** [LOCAL] isOwner(token, assetId, assignmentId)
+***** Assets
+****** DynamoDB:
+******* Read:
+       - tokens-table
+       - users-table
+       - submissions-table
+******* Write:
+*** [LOCAL] isAdmin(token)
+***** Assets
+****** DynamoDB:
+******* Read:
+       - tokens-table
+       - users-table
+******* Write:
+*** [LOCAL][PRIVATE] insertDynamoDB(tablename, object) -> bool
+    This is going to be extremely common
+#+BEGIN_SRC python
+def insertDynamoDB(tablename, json):
+  client = boto3.client('dynamodb')
+  table_name = os.environ[endpoint]
+  # TODO
+#+END_SRC
+*** [LOCAL][PRIVATE] retrieveDynamoDB(tablename, object) -> bool
+    returns {} if successful else None
+#+BEGIN_SRC python
+def retrieveDynamoDB(tablename, json):
+  client = boto3.client('dynamodb')
+  table_name = os.environ[endpoint]
+  # TODO
+#+END_SRC
+** Callable APIs
+*** =Auth=
+**** [PUBLIC] login(authorizationCode) -> bearerToken
+**** [PROTECTED] logout(token) -> null
+*** =Create=
+**** [PROTECTED] submitAssignment(token, assignmentId, asset)
+**** [PROTECTED] createAssignment(token, assignmentName, deploymentPackage, deadline, scoreBreakdown)
+*** =Modify Assignment=
+**** [PROTECTED] changeDeadline(token, assignmentId, deadline)
+**** [PROTECTED] changeScoring(token, assignmentId, scoreBreakdown)
+**** [PROTECTED] changeDeploymentPackage(token, assignmentId, deploymentPackage)
+*** =Query=
+**** [PROTECTED] getSubmissions(token, assignmentId) -> [submission, ...]
+**** [PROTECTED] getScoreboard(token, assignmentId) -> [tokenizedSubmission, ...]
+**** [PROTECTED] getAssignments(token) -> [assignment, ...]
+**** [PROTECTED] getUser(token) -> user
+** Todolist
+*** [1/1] APIs
+***** DONE [PUBLIC] login(authorizationCode) -> bearerToken
+*** [1/1] API Gateway
+***** DONE [PUBLIC] login(authorizationCode) -> bearerToken
+* Frontend
+** Frames
+*** Scoreboard
+**** API calls
+***** getScoreboard(token, assignmentId)
+*** My Submissions
+**** API calls
+***** getSubmissions(token, assignmentId)
+*** Admin Interface
+**** Build an interface to create assignments
+*** User Information
+**** API calls
+***** getUser(token)
+** Storage
+*** S3
+**** frontend-assets-bucket
+** Actions
+*** Submit Assignment
+**** API calls
+***** submitAssignment(token, assignmentId, asset)
+*** Create Assignment
+**** API calls
+***** submitAssignment(token, assignmentId, asset)
+*** Select Assignment
+    Changes currently selected item
+    Refreshes currently selected menu
+*** Log out
+**** API calls
+***** logout(token)
+** TODO Provisioning
+*** S3 Bucket
+    frontend-assets-bucket
+*** AutoScaling group + Elastic Load Balancer
+*** Instance Template
+**** userdata to pull code and start node webserver
+* Grading Workflow
+** Security
+  This is the largest security hazard that we have to deal with.
+*** Permissions:
+    The grading resource needs access to the following(either directly or indirectly):
+    - S3
+    - DynamoDB
+    - SQS
+*** User Classes:
+**** Instructor
+***** Read
+****** Local Filesystem
+***** Write
+****** Local Filesystem
+**** Student
+     No access
+*** Mitigations:
+**** Monitoring
+     Monitor abnormally large files. Possibly a CloudWatch event pushing to an SNS notification.
+**** OS Permissions
+    - All code is run as a non-privileged user
+**** Firewall
+    - Remove internet gateway to prevent data exfiltration
+**** IAM Roles
+    - Invoke lambdas to assign and remove necessary permissions from the box as it needs them.
+      Reduce the AWS permissions that the box has access to as the non privileged user runs 
+      his code and return them in privileged mode.
+**** [PRIVATE][SECRET] quarantine(bool, instance-id)
+    Set quarantine on the calling asset...
+    This endpoint/function is essentially the sudo button that we have to hide
+** Constraints
+   1 grading job at a time per instance, due to quarantine race conditions.
+** Grading AMI
+   In order to perform our security role in this manner, we must provide features
+*** gcc
+*** python
+*** make
+** Filesystem Layout
+*** Environment
+    /deploy/quarantine.py
+    /deploy/cloudgrade.sh
+    /deploy/uploadScores.py
+    /deploy/package.zip -> /deploy/package/
+*** DeploymentPackage.zip format
+   package/
+   package/deploy.sh -> 
+     should generate:
+       package/score.json
+** [PRIVATE][ABSTRACT] gradingWorkflow(netid, assignmentId, assetId)
+   This grading workflow is run on a kubernetes cluster with docker containers running nodejs fetching jobs
+   from an AWS SQS queue. TODO have to make it so if a machine keels over, the asset still gets graded.
+   
+*** Custom grading AMI
+    In order to avoid extensive instructor permission, we will be using custom grading amis
+    #+BEGIN_SRC bash
+    build assets:
+    - gcc
+    - g++
+    - make
+    - gnu coreutils
+    grading assets:
+    - aws-cli
+    - python
+    - python-boto3
+    users:
+    - user #unprivileged user
+    #+END_SRC
+*** FETCH step
+    #+BEGIN_SRC javascript
+    const endpoints = configuration-table['HARDCODED-CRN']; // TODO Generalize
+    const submissionsTable = endpoints['submissions-table'];
+    const documentsBucket = endpoints['documents-bucket'];
+    const gradingQueue = endpoints['grading-queue'];
+     
+    // to get job information
+    const job = gradingQueue.retrieveJob()
+    gradingQueue.sendReceipt()
+    /*
+    // job:
+     {
+       "netid": "$netid",
+       "assignmentId": "$assignmentId",
+       "assetId": "$assetId"
+     }
+    */
+
+    const submission = submissionsTable[assetId];
+    const deployPackage = 'documents-bucket/' + submissions-table[assetId].assignmentId + '/deployPackage.zip'
+    const asset = 'documents-bucket/' + submissions-table[assetId].assignmentId + '/' + submission.assetId;
+    retrieveAssets(deployPackage); // downloads the testing package
+    retrieveAssets(asset); // downloads the asset to be evaluated
+    executeGradingScript('/deploy/cloudgrade.sh', job) // kicks off the grading script to generate ./package/score.json and then will call a script to upload the scores
+    // job is not private data
+    // SHELL CMDLINE arguments are visible to users
+    #+END_SRC
+*** EXECUTE step
+    #+BEGIN_SRC bash
+    #!/bin/bash
+    #filename: /deploy/cloudgrade.sh
+    # STORE ENDPOINTS
+    cd /deploy/
+    # set ./deploy/package owner to user
+    # will cause this package to get reaped after upload
+    chgrp user ./package -R
+    chown user ./package -R
+    chmod 700 ./package -R
+
+    cd ./package
+    sudo -u user ./deploy.sh
+    cd /deploy
+
+    # "/deploy/package/score.json" contains the score that should match the scoreBreakdown object
+    ./uploadScores.py "$1" "$(cat ./package/score.json)"
+
+    # clean up all files by user to maintain the clean state
+    find / -user 'user' -exec rm -fr {} \;
+
+    exit
+    #+END_SRC
+*** WRITEBACK step
+**** uploadScores.py(job, score)
+     submissionsTableEndpoint is required and can be retrieved from the configuration-table
+     insert the score and scoreBreakdown and 'SCORED' into the submissions-table[assetId]
+    #+BEGIN_SRC javascript
+    // package/score.json
+    {
+      "score": 100,
+      "scoreBreakdown": {
+        // these are user defined and are up to the user to keep coherent
+        "some_field": 100,
+        "other_field": 100,
+        "my_field": 100,
+        "field": 100,
+        "feld": 100
+      }
+    }
+    #+END_SRC
+** TODO Todolist
+*** DONE Provisioning
+**** Grading AMI
+**** Subnet
+**** Instance Template
+***** Security Groups
+**** AutoScaling group + Elastic Load Balancer
+**** [0/2] IAM roles
+***** TODO [EC2] Quarantine Invoke Role
+***** TODO [EC2] UnQuarantined Role
+*** DONE Grading AMI
+*** DONE [EXAMPLE]DeploymentPackage.zip
+*** DONE retrieveAssets.py
+*** DONE quarantine.py
+*** DONE cloudgrade.sh
+*** DONE uploadScores.py
+*** TODO Monitoring CloudWatch Events
+* [1/1] Knowledge Gaps
+- [X] OAuth implementation
+* Reach Goals
+** Hidden Assignments for DEV/Prototyping
+** Deleting Assignments
+** Using user data to populate scripts into Grading Workflow Instance Template
+*** Makes it more modular and faster to update scripts
+** [0/3] Reach Goals
+*** TODO [PROTECTED] changeScoring(token, assignmentId, scoreBreakdown)
+*** TODO [PROTECTED] changeDeploymentPackage(token, assignmentId, deploymentPackage)
+*** TODO [UNNECESSARY][PROTECTED] continueSession(token) -> bool
+

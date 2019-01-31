@@ -1,0 +1,2066 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-01-31 Thu 08:56 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Kyle Dixler" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org36dedfa">1. Backend</a>
+<ul>
+<li><a href="#org2d7770b">1.1. Technologies</a>
+<ul>
+<li><a href="#orgb0b90e3">1.1.1. OAuth 2.0</a></li>
+<li><a href="#org8a8534d">1.1.2. Amazon Web Services</a></li>
+</ul>
+</li>
+<li><a href="#orga90e39c">1.2. Storage</a>
+<ul>
+<li><a href="#org0ab0afe">1.2.1. DynamoDB</a></li>
+<li><a href="#orge2dad88">1.2.2. S3</a></li>
+<li><a href="#org29ad454">1.2.3. SQS</a></li>
+</ul>
+</li>
+<li><a href="#org9b1542b">1.3. APIs</a>
+<ul>
+<li><a href="#orgb14cb2e">1.3.1. Auth</a></li>
+<li><a href="#orgcd4d06a">1.3.2. Upload</a></li>
+<li><a href="#org5f8e71c">1.3.3. Modify Scoreboard</a></li>
+<li><a href="#org264d706">1.3.4. Modify Assignment</a></li>
+<li><a href="#org0bb6d59">1.3.5. Query Database</a></li>
+<li><a href="#org25017c4">1.3.6. Grading Workflow</a></li>
+</ul>
+</li>
+<li><a href="#org73c302b">1.4. Library Utilities</a>
+<ul>
+<li><a href="#org8bb3f2e">1.4.1. [LOCAL] getNetId(token) -&gt; string</a></li>
+<li><a href="#orgda2f89e">1.4.2. [LOCAL] getTokenId(netid) -&gt; string</a></li>
+<li><a href="#orgb8b4a4a">1.4.3. [LOCAL] isOwner(token, assetId, assignmentId)</a></li>
+<li><a href="#orgdc436b3">1.4.4. [LOCAL] isAdmin(token)</a></li>
+<li><a href="#orgec95d0b">1.4.5. [LOCAL][PRIVATE] insertDynamoDB(tablename, object) -&gt; bool</a></li>
+<li><a href="#org7a3f1dc">1.4.6. [LOCAL][PRIVATE] retrieveDynamoDB(tablename, object) -&gt; bool</a></li>
+</ul>
+</li>
+<li><a href="#org9013af8">1.5. Callable APIs</a>
+<ul>
+<li><a href="#orgf9ba56d">1.5.1. <code>Auth</code></a></li>
+<li><a href="#org0426a41">1.5.2. <code>Create</code></a></li>
+<li><a href="#orge2ff2ac">1.5.3. <code>Modify Assignment</code></a></li>
+<li><a href="#org243dbe2">1.5.4. <code>Query</code></a></li>
+</ul>
+</li>
+<li><a href="#org12c369b">1.6. Todolist</a>
+<ul>
+<li><a href="#org1e5f27f">1.6.1. <code>[1/1]</code> APIs</a></li>
+<li><a href="#org8afb539">1.6.2. <code>[1/1]</code> API Gateway</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orga55df00">2. Frontend</a>
+<ul>
+<li><a href="#org05a6174">2.1. Frames</a>
+<ul>
+<li><a href="#orgba599fa">2.1.1. Scoreboard</a></li>
+<li><a href="#org84338f6">2.1.2. My Submissions</a></li>
+<li><a href="#orgfbd5540">2.1.3. Admin Interface</a></li>
+<li><a href="#orgb62ab41">2.1.4. User Information</a></li>
+</ul>
+</li>
+<li><a href="#org0a97480">2.2. Storage</a>
+<ul>
+<li><a href="#org5f16623">2.2.1. S3</a></li>
+</ul>
+</li>
+<li><a href="#org08f1d3e">2.3. Actions</a>
+<ul>
+<li><a href="#org6caee06">2.3.1. Submit Assignment</a></li>
+<li><a href="#orgf1eaba2">2.3.2. Create Assignment</a></li>
+<li><a href="#org4368f35">2.3.3. Select Assignment</a></li>
+<li><a href="#org60f7e26">2.3.4. Log out</a></li>
+</ul>
+</li>
+<li><a href="#org990af30">2.4. <span class="todo TODO">TODO</span> Provisioning</a>
+<ul>
+<li><a href="#orgb4e9502">2.4.1. S3 Bucket</a></li>
+<li><a href="#org1ef0f81">2.4.2. AutoScaling group + Elastic Load Balancer</a></li>
+<li><a href="#org7231a47">2.4.3. Instance Template</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org38bbbc1">3. Grading Workflow</a>
+<ul>
+<li><a href="#org131198b">3.1. Security</a>
+<ul>
+<li><a href="#org3b54a0b">3.1.1. Permissions:</a></li>
+<li><a href="#orgab732ee">3.1.2. User Classes:</a></li>
+<li><a href="#org84f7c0b">3.1.3. Mitigations:</a></li>
+</ul>
+</li>
+<li><a href="#org008da22">3.2. Constraints</a></li>
+<li><a href="#org2a9fe19">3.3. Grading AMI</a>
+<ul>
+<li><a href="#org2a9ac08">3.3.1. gcc</a></li>
+<li><a href="#org446923b">3.3.2. python</a></li>
+<li><a href="#orgc2857d5">3.3.3. make</a></li>
+</ul>
+</li>
+<li><a href="#org1a000dd">3.4. Filesystem Layout</a>
+<ul>
+<li><a href="#orgc54d31c">3.4.1. Environment</a></li>
+<li><a href="#orgcccfed0">3.4.2. DeploymentPackage.zip format</a></li>
+</ul>
+</li>
+<li><a href="#org98562a3">3.5. [PRIVATE][ABSTRACT] gradingWorkflow(netid, assignmentId, assetId)</a>
+<ul>
+<li><a href="#org7c0c86b">3.5.1. Custom grading AMI</a></li>
+<li><a href="#org8b455f1">3.5.2. FETCH step</a></li>
+<li><a href="#org899230a">3.5.3. EXECUTE step</a></li>
+<li><a href="#org1e84273">3.5.4. WRITEBACK step</a></li>
+</ul>
+</li>
+<li><a href="#orgc36fed9">3.6. <span class="todo TODO">TODO</span> Todolist</a>
+<ul>
+<li><a href="#org04d6c13">3.6.1. <span class="done DONE">DONE</span> Provisioning</a></li>
+<li><a href="#orgf8c2871">3.6.2. <span class="done DONE">DONE</span> Grading AMI</a></li>
+<li><a href="#org179ffc7">3.6.3. <span class="done DONE">DONE</span> [EXAMPLE]DeploymentPackage.zip</a></li>
+<li><a href="#org0fad855">3.6.4. <span class="done DONE">DONE</span> retrieveAssets.py</a></li>
+<li><a href="#orgd31fa57">3.6.5. <span class="done DONE">DONE</span> quarantine.py</a></li>
+<li><a href="#org8d81b7d">3.6.6. <span class="done DONE">DONE</span> cloudgrade.sh</a></li>
+<li><a href="#org698bc57">3.6.7. <span class="done DONE">DONE</span> uploadScores.py</a></li>
+<li><a href="#org42e0792">3.6.8. <span class="todo TODO">TODO</span> Monitoring CloudWatch Events</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgf5fd1f5">4. <code>[1/1]</code> Knowledge Gaps</a></li>
+<li><a href="#orge78ad18">5. Reach Goals</a>
+<ul>
+<li><a href="#orgcd06a0b">5.1. Hidden Assignments for DEV/Prototyping</a></li>
+<li><a href="#org8ac9d9e">5.2. Deleting Assignments</a></li>
+<li><a href="#org1b1be3b">5.3. Using user data to populate scripts into Grading Workflow Instance Template</a>
+<ul>
+<li><a href="#org78dbd8a">5.3.1. Makes it more modular and faster to update scripts</a></li>
+</ul>
+</li>
+<li><a href="#org464c410">5.4. <code>[0/3]</code> Reach Goals</a>
+<ul>
+<li><a href="#org260c700">5.4.1. <span class="todo TODO">TODO</span> [PROTECTED] changeScoring(token, assignmentId, scoreBreakdown)</a></li>
+<li><a href="#org12c2991">5.4.2. <span class="todo TODO">TODO</span> [PROTECTED] changeDeploymentPackage(token, assignmentId, deploymentPackage)</a></li>
+<li><a href="#org5df9267">5.4.3. <span class="todo TODO">TODO</span> [UNNECESSARY][PROTECTED] continueSession(token) -&gt; bool</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org36dedfa" class="outline-2">
+<h2 id="org36dedfa"><span class="section-number-2">1</span> Backend</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org2d7770b" class="outline-3">
+<h3 id="org2d7770b"><span class="section-number-3">1.1</span> Technologies</h3>
+<div class="outline-text-3" id="text-1-1">
+</div>
+<div id="outline-container-orgb0b90e3" class="outline-4">
+<h4 id="orgb0b90e3"><span class="section-number-4">1.1.1</span> OAuth 2.0</h4>
+<div class="outline-text-4" id="text-1-1-1">
+</div>
+<ol class="org-ol">
+<li><a id="org555f486"></a>Playground<br />
+<div class="outline-text-5" id="text-1-1-1-1">
+<p>
+targets:
+<a href="https://www.googleapis.com/auth/userinfo.email">https://www.googleapis.com/auth/userinfo.email</a>
+<a href="https://www.googleapis.com/auth/userinfo.profile">https://www.googleapis.com/auth/userinfo.profile</a>
+</p>
+
+<p>
+<a href="https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=https://developers.google.com/oauthplayground&amp;prompt=consent&amp;response_type=code&amp;client_id=407408718192.apps.googleusercontent.com&amp;scope=https://www.googleapis.com/auth/userinfo.email+https://www.googleapis.com/auth/userinfo.profile&amp;access_type=offline">https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=https://developers.google.com/oauthplayground&amp;prompt=consent&amp;response_type=code&amp;client_id=407408718192.apps.googleusercontent.com&amp;scope=https://www.googleapis.com/auth/userinfo.email+https://www.googleapis.com/auth/userinfo.profile&amp;access_type=offline</a>
+send the returned token to the application to request a token
+request:
+</p>
+<div class="org-src-container">
+<pre class="src src-javascript">// Request
+POST /oauth2/v4/token HTTP/1.1
+Host: www.googleapis.com
+Content-length: 277
+content-type: application/x-www-form-urlencoded
+user-agent: google-oauth-playground
+code=4%2FAAC8yZdfe98kiiX6R-lojj5Dqe4HHtGkDPMlaFobNBn1ai4aHpmRhpyZvD49xxsyHJaD5of_1zf50I7KyMZeXyk&amp;redirect_uri=https%3A%2F%2Fdevelopers.google.com%2Foauthplayground&amp;client_id=407408718192.apps.googleusercontent.com&amp;client_secret=************&amp;scope=&amp;grant_type=authorization_code
+
+// Response
+HTTP/1.1 200 OK
+Content-length: 1389
+X-xss-protection: 1; mode=block
+X-content-type-options: nosniff
+Transfer-encoding: chunked
+Expires: Mon, 01 Jan 1990 00:00:00 GMT
+Vary: Origin, X-Origin
+Server: GSE
+-content-encoding: gzip
+Pragma: no-cache
+Cache-control: no-cache, no-store, max-age=0, must-revalidate
+Date: Sun, 22 Jul 2018 16:26:54 GMT
+X-frame-options: SAMEORIGIN
+Alt-svc: quic=":443"; ma=2592000; v="44,43,39,35"
+Content-type: application/json; charset=UTF-8
+{
+  // This is unique to the application
+  "access_token": "ya29.GlsABqo0h39HIGVZS3nJ_ZxU73fIfK929JGLXve2CCFJXv89HNyGY-tJZAONtfJCo1nktLYMXENSfvmZKhPehprQki1ZmluG6iHNTWwSEyHTg8NIfSmDavrH9hQd", 
+  "token_type": "Bearer", 
+  "expires_in": 3600, 
+  "refresh_token": "1/w2Ix95nfsB8x7dc_og4PhtvqxKKs10t2LW4-xvoZmxU", 
+  // This is unique to the user
+  "id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImM2YWY3Y2FhMDg5NWZkMDFlNzc4ZGNlYWE3YTc5ODgzNDdkOGYyNWMifQ.eyJhenAiOiI0MDc0MDg3MTgxOTIuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJhdWQiOiI0MDc0MDg3MTgxOTIuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJzdWIiOiIxMDA3NDA4MTcxMjQ4NjUwNDA2MTgiLCJoZCI6InVpYy5lZHUiLCJlbWFpbCI6ImtkaXhsZTJAdWljLmVkdSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJhdF9oYXNoIjoiengxT2dGeURTVV9JMlRLRl9WenRBUSIsImV4cCI6MTUzMjI4MDQxNCwiaXNzIjoiaHR0cHM6Ly9hY2NvdW50cy5nb29nbGUuY29tIiwiaWF0IjoxNTMyMjc2ODE0LCJuYW1lIjoiS3lsZSBEaXhsZXIiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDUuZ29vZ2xldXNlcmNvbnRlbnQuY29tLy1CZnZfY3NOUWRHWS9BQUFBQUFBQUFBSS9BQUFBQUFBQUFBQS9BQW5uWTdyUWZfVmE5NDFpZnZYMFMxdFViYl9qU2x6OVBRL3M5Ni1jL3Bob3RvLmpwZyIsImdpdmVuX25hbWUiOiJLeWxlIiwiZmFtaWx5X25hbWUiOiJEaXhsZXIiLCJsb2NhbGUiOiJlbiJ9.H9LJ8do7VqUepbYI4t2Mr1yrvTQJYvUnoy7XGdbXTdKUhHYG7VKpoWd76MkT77oujXQhpMJ60c_BYhCo8EpxufM75gYhVWhak4L1MOWIeHKwJFfRxu9kWVsgBtsAwsUKe4J4ZswA06bLQP10i9GB1Fjo0bimRaTfFyWTDdO_UfpMVw1QvsdPFUqhTGAmqHY3dBU3sNBMZcI3LtFCUVAlCR3-YFDsOvklyhRrwNV_oqDh6HoCL4IJGViI6LMpAdSJjNElFzitlEXUV8ET2Fw1FsAxs-PPKNmYVgI1119yYKmmm_KQJoZI5vwIZtzZKdzh6pnV7SRlWtcKASh-ynr0lg"
+}
+</pre>
+</div>
+<p>
+Now we can use the token to request user data. The token may time out, but we can use it on our end.
+We use the credential to retrieve user data:
+</p>
+<ul class="org-ul">
+<li>email(uic email)</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-javascript">// Request
+GET /oauth2/v2/userinfo HTTP/1.1
+Host: www.googleapis.com
+Content-length: 0
+Authorization: Bearer ya29.GlsABqo0h39HIGVZS3nJ_ZxU73fIfK929JGLXve2CCFJXv89HNyGY-tJZAONtfJCo1nktLYMXENSfvmZKhPehprQki1ZmluG6iHNTWwSEyHTg8NIfSmDavrH9hQd
+
+// Response
+HTTP/1.1 200 OK
+Content-length: 331
+X-xss-protection: 1; mode=block
+Content-location: https://www.googleapis.com/oauth2/v2/userinfo
+X-content-type-options: nosniff
+Transfer-encoding: chunked
+Expires: Mon, 01 Jan 1990 00:00:00 GMT
+Vary: Origin, X-Origin
+Server: GSE
+-content-encoding: gzip
+Pragma: no-cache
+Cache-control: no-cache, no-store, max-age=0, must-revalidate
+Date: Sun, 22 Jul 2018 16:29:04 GMT
+X-frame-options: SAMEORIGIN
+Alt-svc: quic=":443"; ma=2592000; v="44,43,39,35"
+Content-type: application/json; charset=UTF-8
+{
+  "family_name": "Dixler", 
+  "name": "Kyle Dixler", 
+  "picture": "https://lh5.googleusercontent.com/-Bfv_csNQdGY/AAAAAAAAAAI/AAAAAAAAAAA/AAnnY7rQf_Va941ifvX0S1tUbb_jSlz9PQ/mo/photo.jpg", 
+  "locale": "en", 
+  "email": "kdixle2@uic.edu", 
+  "given_name": "Kyle", 
+  "id": "100740817124865040618", 
+  "hd": "uic.edu", 
+  "verified_email": true
+}
+</pre>
+</div>
+<p>
+Then we can store the cookie into our tokens-table and return it for our user to put in localStorage and to use as their token
+</p>
+</div>
+</li>
+</ol>
+</div>
+<div id="outline-container-org8a8534d" class="outline-4">
+<h4 id="org8a8534d"><span class="section-number-4">1.1.2</span> Amazon Web Services</h4>
+<div class="outline-text-4" id="text-1-1-2">
+</div>
+<ol class="org-ol">
+<li><a id="org626f0b5"></a>DynamoDB<br /></li>
+<li><a id="org2638e4f"></a>S3<br /></li>
+<li><a id="orgcdf65f1"></a>Lambda<br /></li>
+<li><a id="org2670af8"></a>API Gateway<br /></li>
+<li><a id="org4eb1840"></a>EC2<br /></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orga90e39c" class="outline-3">
+<h3 id="orga90e39c"><span class="section-number-3">1.2</span> Storage</h3>
+<div class="outline-text-3" id="text-1-2">
+</div>
+<div id="outline-container-org0ab0afe" class="outline-4">
+<h4 id="org0ab0afe"><span class="section-number-4">1.2.1</span> DynamoDB</h4>
+<div class="outline-text-4" id="text-1-2-1">
+</div>
+<ol class="org-ol">
+<li><a id="org254c27e"></a>tokens-table<br />
+<div class="outline-text-5" id="text-1-2-1-1">
+<p>
+Stores the session credentials of our users
+put a lifecycle policy for these tokens
+</p>
+<div class="org-src-container">
+<pre class="src src-javascript">  //"token": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImM2YWY3Y2FhMDg5NWZkMDFlNzc4ZGNlYWE3YTc5ODgzNDdkOGYyNWMifQ.eyJhenAiOiI0MDc0MDg3MTgxOTIuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJhdWQiOiI0MDc0MDg3MTgxOTIuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJzdWIiOiIxMDA3NDA4MTcxMjQ4NjUwNDA2MTgiLCJoZCI6InVpYy5lZHUiLCJlbWFpbCI6ImtkaXhsZTJAdWljLmVkdSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJhdF9oYXNoIjoiengxT2dGeURTVV9JMlRLRl9WenRBUSIsImV4cCI6MTUzMjI4MDQxNCwiaXNzIjoiaHR0cHM6Ly9hY2NvdW50cy5nb29nbGUuY29tIiwiaWF0IjoxNTMyMjc2ODE0LCJuYW1lIjoiS3lsZSBEaXhsZXIiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDUuZ29vZ2xldXNlcmNvbnRlbnQuY29tLy1CZnZfY3NOUWRHWS9BQUFBQUFBQUFBSS9BQUFBQUFBQUFBQS9BQW5uWTdyUWZfVmE5NDFpZnZYMFMxdFViYl9qU2x6OVBRL3M5Ni1jL3Bob3RvLmpwZyIsImdpdmVuX25hbWUiOiJLeWxlIiwiZmFtaWx5X25hbWUiOiJEaXhsZXIiLCJsb2NhbGUiOiJlbiJ9.H9LJ8do7VqUepbYI4t2Mr1yrvTQJYvUnoy7XGdbXTdKUhHYG7VKpoWd76MkT77oujXQhpMJ60c_BYhCo8EpxufM75gYhVWhak4L1MOWIeHKwJFfRxu9kWVsgBtsAwsUKe4J4ZswA06bLQP10i9GB1Fjo0bimRaTfFyWTDdO_UfpMVw1QvsdPFUqhTGAmqHY3dBU3sNBMZcI3LtFCUVAlCR3-YFDsOvklyhRrwNV_oqDh6HoCL4IJGViI6LMpAdSJjNElFzitlEXUV8ET2Fw1FsAxs-PPKNmYVgI1119yYKmmm_KQJoZI5vwIZtzZKdzh6pnV7SRlWtcKASh-ynr0lg",
+{
+  "token": "251",
+  "netid": "kdixle2"
+}
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org84fa658"></a>users-table<br />
+<div class="outline-text-5" id="text-1-2-1-2">
+<p>
+Stores user credentials to allow for secrets, token is the tokenized user name generated 
+from the first time the user entered salted with their netid, we don't need to query the 
+board to reverse the tokenization.
+</p>
+<div class="org-src-container">
+<pre class="src src-javascript">{
+  "netid": "kdixle2",
+  "admin": true,
+  "uin": "666666666",
+  "tokenid": "c1f8b18730737be44ea82b2a9ffd887729bd9ded1960e4b38bf49492fb0d1fa3"
+}
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org7e651d5"></a>submissions-table<br />
+<div class="outline-text-5" id="text-1-2-1-3">
+<p>
+Store all of the submissions across every assignment
+</p>
+<div class="org-src-container">
+<pre class="src src-javascript"> // the asset id is generated using the submission time and the shasum of the submission
+{
+  "assetId": "c1f8b18730737be44ea82b2a9ffd887729bd9ded1960e4b38bf49492fb0d1fa3",
+  "netid": "kdixle2",
+  "assignmentId": 0,
+  "submissionDate": "2018-07-02 11:59",
+  "state": "SUBMITTED"|"SCORED",
+  "score": 100,
+  "scoreBreakdown": {
+    "some_field": 100,
+    "other_field": 100,
+    "my_field": 100,
+    "field": 100,
+    "feld": 100
+  }
+}
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org347af1f"></a>scoreboard-table<br />
+<div class="outline-text-5" id="text-1-2-1-4">
+<p>
+we will be using the tokenid as the HASH key and the assignmentId as the RANGE key
+Store the highest scores for each student
+tokenid should be unique to each assignmentId
+</p>
+<div class="org-src-container">
+<pre class="src src-javascript">{
+  // the asset id is generated using the submission time and the shasum of the submission
+  "assetId": "c1f8b18730737be44ea82b2a9ffd887729bd9ded1960e4b38bf49492fb0d1fa3",
+  "assignmentId": 0,
+  "tokenid": "c1f8b18730737be44ea82b2a9ffd887729bd9ded1960e4b38bf49492fb0d1fa3",
+  "submissionDate": "2018-07-02 11:59",
+  "state": "SUBMITTED"|"SCORED",
+  "score": 100,
+  "scoreBreakdown": {
+    "some_field": 100,
+    "other_field": 100,
+    "my_field": 100,
+    "field": 100,
+    "feld": 100
+  }
+}
+</pre>
+</div>
+</div>
+</li>
+<li><a id="orga62e23d"></a>assignments-table<br />
+<div class="outline-text-5" id="text-1-2-1-5">
+<p>
+Store the data for each assignment
+using [-1] as the metadata index
+</p>
+<div class="org-src-container">
+<pre class="src src-javascript">{
+  "assignmentId": 0,
+  "assignmentName": "Linked Lists",
+  "deadline": "2018-07-02 11:59",
+  "score": 100,
+  "scoreBreakdown": {
+    // these are user defined and are up to the user to keep coherent
+    "some_field": 100,
+    "other_field": 100,
+    "my_field": 100,
+    "field": 100,
+    "feld": 100
+  }
+}
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org87cd38b"></a>configuration-table<br />
+<div class="outline-text-5" id="text-1-2-1-6">
+<p>
+Store resource names and mappings to make this solution more generic
+</p>
+<div class="org-src-container">
+<pre class="src src-javascript"> {
+   "CRN": 44322,
+   "metadata": {
+     "instructor": "John Lillis",
+     "course_number": "251",
+     "course_name": "Data Structures"
+   },
+   "s3": {
+     "documents-bucket": "$bucketname"
+   },
+   "dynamodb": {
+     "users-table": "$tablename",
+     "assignments-table": "$tablename",
+     "submissions-table": "$tablename"
+   }
+   "sqs": {
+     "grading-queue": "$queuename"
+   }
+}
+
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div id="outline-container-orge2dad88" class="outline-4">
+<h4 id="orge2dad88"><span class="section-number-4">1.2.2</span> S3</h4>
+<div class="outline-text-4" id="text-1-2-2">
+</div>
+<ol class="org-ol">
+<li><a id="orgd8a5fc8"></a>documents-bucket<br />
+<div class="outline-text-5" id="text-1-2-2-1">
+<p>
+Stores everyone's submissions and the testing deploy packages.
+Namespace appears like this
+</p>
+
+<p>
+s3://documents-bucket.name/assignment.assignmentId/&#x2026;
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="org43c7fae"></a>Deployment Packages<br />
+<div class="outline-text-6" id="text-1-2-2-1-1">
+<p>
+Deploy Packages are stored at:
+</p>
+<div class="org-src-container">
+<pre class="src src-javascript">{$configuration-table[$CRN]["s3"]["documents-bucket"]}/{$assignments-table[$assignmentId]}/"deploymentPackage.zip"
+// uic-documents-bucket-44322-fa2018/0/deploymentPackage.zip
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="org7d80967"></a>Assets<br />
+<div class="outline-text-6" id="text-1-2-2-1-2">
+<p>
+Assets are stored at:
+</p>
+<div class="org-src-container">
+<pre class="src src-javascript">{$configuration-table[$CRN]["s3"]["documents-bucket"]}/{$assignments-table[$assignmentId].assignmentId}/{sha256hash(asset+$submissionTime+$random)}
+// uic-documents-bucket-44322-fa2018/0/c1f8b18730737be44ea82b2a9ffd887729bd9ded1960e4b38bf49492fb0d1fa3
+// the lookup in the assignments table is done as a check to see if the assignment is valid otherwise an exception will be thrown
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-org29ad454" class="outline-4">
+<h4 id="org29ad454"><span class="section-number-4">1.2.3</span> SQS</h4>
+<div class="outline-text-4" id="text-1-2-3">
+</div>
+<ol class="org-ol">
+<li><a id="orgffcf1d8"></a>[FIFO] grading-queue<br />
+<div class="outline-text-5" id="text-1-2-3-1">
+<p>
+stores the list of assets to be graded.
+using content based deduplication:
+</p>
+<ul class="org-ul">
+<li>Our assetIds should be unique thus our messages will be unique so we 
+should use extra protections</li>
+</ul>
+</div>
+<ol class="org-ol">
+<li><a id="orgdd9b272"></a>data format:<br />
+<div class="outline-text-6" id="text-1-2-3-1-1">
+<div class="org-src-container">
+<pre class="src src-javascript">{
+  "assetId": "{assetId}",
+  "assetBucket": "{documents-bucket-name}",
+  "assignmentId": "{assignmentId}"
+}
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org9b1542b" class="outline-3">
+<h3 id="org9b1542b"><span class="section-number-3">1.3</span> APIs</h3>
+<div class="outline-text-3" id="text-1-3">
+</div>
+<div id="outline-container-orgb14cb2e" class="outline-4">
+<h4 id="orgb14cb2e"><span class="section-number-4">1.3.1</span> Auth</h4>
+<div class="outline-text-4" id="text-1-3-1">
+</div>
+<ol class="org-ol">
+<li><a id="org06dd9a3"></a>[PUBLIC] login(authorizationCode) -&gt; bearerToken<br />
+<div class="outline-text-5" id="text-1-3-1-1">
+<p>
+Responsibility to get a new login token and associate it with the current user.
+If that user doesn't exist, make them exist and populate their users-table entry using the hash of the current time
+</p>
+</div>
+<ol class="org-ol">
+<li><a id="org185322d"></a>Assets<br />
+<ol class="org-ol">
+<li><a id="org9b69749"></a>DynamoDB:<br />
+<ol class="org-ol">
+<li><a id="orgea1e705"></a>Read:<br />
+<div class="outline-text-8" id="text-1-3-1-1-1-1-1">
+<ul class="org-ul">
+<li>users-table</li>
+</ul>
+</div>
+</li>
+<li><a id="orgd9ac1b1"></a>Write:<br />
+<div class="outline-text-8" id="text-1-3-1-1-1-1-2">
+<ul class="org-ul">
+<li>tokens-table</li>
+<li>users-table</li>
+</ul>
+</div>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><a id="orgd32bea9"></a>[PROTECTED] continueSession(token) -&gt; bool<br />
+<div class="outline-text-5" id="text-1-3-1-2">
+<p>
+Responsibility to verify that the token is legitimate
+</p>
+</div>
+<ol class="org-ol">
+<li><a id="org7ae46ef"></a>Assets<br />
+<ol class="org-ol">
+<li><a id="org311c178"></a>DynamoDB:<br />
+<ol class="org-ol">
+<li><a id="org335e5d5"></a>Read:<br />
+<div class="outline-text-8" id="text-1-3-1-2-1-1-1">
+<ul class="org-ul">
+<li>tokens-table</li>
+</ul>
+</div>
+</li>
+<li><a id="orgd14b169"></a>Write:<br /></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><a id="orga525d99"></a>[PROTECTED] logout(token) -&gt; null<br />
+<ol class="org-ol">
+<li><a id="org06f571e"></a>Assets<br />
+<ol class="org-ol">
+<li><a id="org9f4c7d1"></a>DynamoDB:<br />
+<ol class="org-ol">
+<li><a id="orgd6f52fa"></a>Read:<br /></li>
+<li><a id="org2f758ce"></a>Write:<br />
+<div class="outline-text-8" id="text-1-3-1-3-1-1-2">
+<ul class="org-ul">
+<li>tokens-table</li>
+</ul>
+</div>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</div>
+<div id="outline-container-orgcd4d06a" class="outline-4">
+<h4 id="orgcd4d06a"><span class="section-number-4">1.3.2</span> Upload</h4>
+<div class="outline-text-4" id="text-1-3-2">
+</div>
+<ol class="org-ol">
+<li><a id="orgd9c810e"></a>[PROTECTED] submitAssignment(token, assignmentId, asset)<br />
+<ol class="org-ol">
+<li><a id="org84ee639"></a>Assets<br />
+<ol class="org-ol">
+<li><a id="org7dc1a94"></a>DynamoDB:<br />
+<ol class="org-ol">
+<li><a id="orgdadcdd0"></a>Read:<br />
+<div class="outline-text-8" id="text-1-3-2-1-1-1-1">
+<ul class="org-ul">
+<li>tokens-table (validation)</li>
+<li>assignments-table (validation)</li>
+<li>users-table (retrieve netid)</li>
+</ul>
+</div>
+</li>
+<li><a id="orga6f9846"></a>Write:<br />
+<div class="outline-text-8" id="text-1-3-2-1-1-1-2">
+<ul class="org-ul">
+<li>submissions-table</li>
+</ul>
+<p>
+provisions the submission-table entry to be modified later
+</p>
+<div class="org-src-container">
+<pre class="src src-javascript">  // the asset id is generated using the submission time and the shasum of the submission
+{
+  "assetId": "c1f8b18730737be44ea82b2a9ffd887729bd9ded1960e4b38bf49492fb0d1fa3",
+  "assignmentId": 0,
+  "netid": "kdixle2",
+  "state": "SUBMITTED"
+  "score": 0,
+  "scoreBreakdown": {}
+}
+</pre>
+</div>
+<p>
+INDIRECTLY -&gt; scoreboard-table
+  Workflow may modify this table if this is the new highest score
+</p>
+<div class="org-src-container">
+<pre class="src src-python">if score &gt; currentScore:
+  updateScoreboard(netid, assetId, assignmentId)
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</li>
+<li><a id="orgca6b8c6"></a>S3:<br />
+<ol class="org-ol">
+<li><a id="orgb168349"></a>Read:<br /></li>
+<li><a id="org3f74e1d"></a>Write:<br />
+<div class="outline-text-8" id="text-1-3-2-1-1-2-2">
+<ul class="org-ul">
+<li>documents-bucket/$assignmentId/{sha256sum(asset+submissionTime+random)}</li>
+</ul>
+</div>
+</li>
+</ol>
+</li>
+<li><a id="orgd576175"></a>SQS:<br />
+<ol class="org-ol">
+<li><a id="org119c01c"></a>Read:<br /></li>
+<li><a id="org1ca4ea4"></a>Write:<br />
+<div class="outline-text-8" id="text-1-3-2-1-1-3-2">
+<ul class="org-ul">
+<li>grading-queue</li>
+</ul>
+</div>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><a id="org6a0e899"></a>[PROTECTED][ADMIN] createAssignment(token, assignmentName, deploymentPackage, deadline, scoreBreakdown)<br />
+<div class="outline-text-5" id="text-1-3-2-2">
+<p>
+Need to make sure to validate that the user is an admin
+</p>
+</div>
+<ol class="org-ol">
+<li><a id="org60ae9a2"></a>Assets<br />
+<ol class="org-ol">
+<li><a id="orgaecd7b6"></a>DynamoDB:<br />
+<ol class="org-ol">
+<li><a id="org1abf2f1"></a>Read:<br />
+<div class="outline-text-8" id="text-1-3-2-2-1-1-1">
+<ul class="org-ul">
+<li>tokens-table(validation isUser)</li>
+<li>users-table(validation isAdmin)</li>
+</ul>
+</div>
+</li>
+<li><a id="org25ca33a"></a>Write:<br />
+<div class="outline-text-8" id="text-1-3-2-2-1-1-2">
+<ul class="org-ul">
+<li>assignments-table</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-javascript">{
+  "assignmentId": {GENERATED},
+  "assignmentName": $assignmentName,
+  "deadline": $deadline,
+  "score": $scoreBreakdown
+}
+// call params, base64 encoded
+{
+ "token": "251",
+  "assignmentName": "Linked Lists",
+  "deadline": "2018-12-02 11:59",
+  "deploymentPackage": "I2luY2x1ZGUgPHN0ZGlvLmg+CiNpbmNsdWRlIDxzdGRsaWIuaD4KCmludCBtYWluKCl7CiAgIHByaW50ZigiSGVsbG8gV29ybGQhXG4iKTsKICAgcmV0dXJuIDA7Cn0K",
+  "scoreBreakdown": {
+   "score": 100,
+   "scoreBreakdown": {
+     "some_field": 100,
+     "other_field": 100,
+     "my_field": 100,
+     "field": 100,
+     "feld": 100
+     }
+   }
+}
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</li>
+<li><a id="org4547e21"></a>S3:<br />
+<ol class="org-ol">
+<li><a id="org8da4e0f"></a>Read:<br /></li>
+<li><a id="orgcf92778"></a>Write:<br />
+<div class="outline-text-8" id="text-1-3-2-2-1-2-2">
+<ul class="org-ul">
+<li>documents-bucket/{assignments-table[assignmentId]}/deploymentPackage.zip</li>
+</ul>
+</div>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><a id="org9ebd369"></a>[PRIVATE] enterScore(assetId, assignmentId, score, scoreBreakdown)<br />
+<div class="outline-text-5" id="text-1-3-2-3">
+<p>
+Writes a score in for the submission.
+</p>
+</div>
+<ol class="org-ol">
+<li><a id="orgd278753"></a>Assets<br />
+<ol class="org-ol">
+<li><a id="orgcfaf68e"></a>DynamoDB:<br />
+<ol class="org-ol">
+<li><a id="orgb6f9298"></a>Read:<br /></li>
+<li><a id="org76614c3"></a>Write:<br />
+<div class="outline-text-8" id="text-1-3-2-3-1-1-2">
+<ul class="org-ul">
+<li>submissions-table</li>
+</ul>
+</div>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-org5f8e71c" class="outline-4">
+<h4 id="org5f8e71c"><span class="section-number-4">1.3.3</span> Modify Scoreboard</h4>
+<div class="outline-text-4" id="text-1-3-3">
+</div>
+<ol class="org-ol">
+<li><a id="orgf25de1d"></a>[PRIVATE] updateScoreboard(netid, assetId, assignmentId)<br />
+<ol class="org-ol">
+<li><a id="orga997292"></a>Trigger: submissions-table dynamodb stream[MODIFY]<br />
+<div class="outline-text-6" id="text-1-3-3-1-1">
+<p>
+When the submissions-table is modified,
+ if the $SUBMISSION.state is 'SCORED', then
+   if the $SUBMISSION.score is larger than the current scoreboard submission for getTokenId($SUBMISSION.netid)
+     replace current scoreboard entry with tokenizedSubmission($ENTRY)
+</p>
+
+<p>
+its the highest of 
+</p>
+</div>
+</li>
+<li><a id="org5b5a421"></a>Assets<br />
+<ol class="org-ol">
+<li><a id="org811ba96"></a>DynamoDB:<br />
+<ol class="org-ol">
+<li><a id="orgb326db2"></a>Read:<br />
+<div class="outline-text-8" id="text-1-3-3-1-2-1-1">
+<ul class="org-ul">
+<li>submissions-table</li>
+</ul>
+</div>
+</li>
+<li><a id="orge4a305e"></a>Write:<br />
+<div class="outline-text-8" id="text-1-3-3-1-2-1-2">
+<ul class="org-ul">
+<li>scoreboard-table</li>
+</ul>
+</div>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-org264d706" class="outline-4">
+<h4 id="org264d706"><span class="section-number-4">1.3.4</span> Modify Assignment</h4>
+<div class="outline-text-4" id="text-1-3-4">
+</div>
+<ol class="org-ol">
+<li><a id="org71212da"></a>[PROTECTED][ADMIN] changeDeadline(token, assignmentId, deadline)<br />
+<div class="outline-text-5" id="text-1-3-4-1">
+<p>
+What if it's being extended after it's due?
+</p>
+</div>
+<ol class="org-ol">
+<li><a id="org008d5aa"></a>Assets<br />
+<ol class="org-ol">
+<li><a id="org84630b8"></a>DynamoDB:<br />
+<ol class="org-ol">
+<li><a id="orgc29e98e"></a>Read:<br />
+<div class="outline-text-8" id="text-1-3-4-1-1-1-1">
+<ul class="org-ul">
+<li>tokens-table</li>
+<li>users-table</li>
+</ul>
+</div>
+</li>
+<li><a id="orge08e54a"></a>Write:<br />
+<div class="outline-text-8" id="text-1-3-4-1-1-1-2">
+<ul class="org-ul">
+<li>assignments-table</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-javascript">{
+  "assignmentId": assignmentId,
+  "deadline": $deadline
+}
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><a id="org5d9c8dc"></a>[FUTURE] <code>[PROTECTED][ADMIN] changeScoring(token, assignmentId, scoreBreakdown)</code><br />
+<div class="outline-text-5" id="text-1-3-4-2">
+<p>
+     ot my prNoblem if the rubric is broken
+     his may Trequire a change of the deployment package
+*****Assets   
+</p>
+</div>
+<ol class="org-ol">
+<li><a id="orge9610a2"></a>DynamoD*B:<br />
+<ol class="org-ol">
+<li><a id="org5608910"></a>Read: *<br />
+<div class="outline-text-7" id="text-1-3-4-2-1-1">
+<ul class="org-ul">
+<li>token s-table</li>
+<li>users -table</li>
+</ul>
+</div>
+</li>
+<li><a id="orgbee9639"></a>Write:*<br />
+<div class="outline-text-7" id="text-1-3-4-2-1-2">
+<ul class="org-ul">
+<li>assig nments-table</li>
+</ul>
+<p>
++BEGIN<sub>S</sub>#RC javascript
+        {
+ "assign mentId": assignmentId,
+ "deadli ne": $deadline
+        }
++END<sub>SRC</sub>#
+</p>
+</div>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+
+<li><a id="orgf28c6e7"></a>[FUTURE] <code>[PROTECTED][ADMIN] changeDeploymentPackage(token, assignmentId, deploymentPackage)</code><br />
+<div class="outline-text-5" id="text-1-3-4-3">
+<p>
+Not my problem if the deployment package is broken. This is a future reach goal
+This may require a change of the scoring
+</p>
+</div>
+<ol class="org-ol">
+<li><a id="org080eac2"></a>Assets<br />
+<ol class="org-ol">
+<li><a id="orgbb1116e"></a>DynamoDB:<br />
+<ol class="org-ol">
+<li><a id="org7e79ec1"></a>Read:<br />
+<div class="outline-text-8" id="text-1-3-4-3-1-1-1">
+<ul class="org-ul">
+<li>tokens-table(validate isUser)</li>
+<li>users-table(validate isAdmin)</li>
+</ul>
+</div>
+</li>
+<li><a id="org00cc4f3"></a>Write:<br /></li>
+</ol>
+</li>
+<li><a id="org0bfc488"></a>S3:<br />
+<ol class="org-ol">
+<li><a id="orgf9dad88"></a>Read:<br /></li>
+<li><a id="org993db1c"></a>Write:<br />
+<div class="outline-text-8" id="text-1-3-4-3-1-2-2">
+<ul class="org-ul">
+<li>documents-bucket/{assignments-table[assignmentId]}/deploymentPackage.zip</li>
+</ul>
+</div>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-org0bb6d59" class="outline-4">
+<h4 id="org0bb6d59"><span class="section-number-4">1.3.5</span> Query Database</h4>
+<div class="outline-text-4" id="text-1-3-5">
+</div>
+<ol class="org-ol">
+<li><a id="org2b48814"></a>[PROTECTED] getSubmissions(token, assignmentId) -&gt; [submission, &#x2026;]<br />
+<ol class="org-ol">
+<li><a id="orgaed4550"></a>Assets<br />
+<ol class="org-ol">
+<li><a id="orga161bcf"></a>DynamoDB:<br />
+<ol class="org-ol">
+<li><a id="org97ee2db"></a>Read:<br />
+<div class="outline-text-8" id="text-1-3-5-1-1-1-1">
+<ul class="org-ul">
+<li>tokens-table</li>
+<li>assignments-table(validate)</li>
+<li>submissions-table</li>
+</ul>
+</div>
+</li>
+<li><a id="org39ee976"></a>Write:<br /></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><a id="orga852a58"></a>[PROTECTED] getScoreboard(token, assignmentId) -&gt; [tokenizedSubmission, &#x2026;]<br />
+<ol class="org-ol">
+<li><a id="orgea783d3"></a>Assets<br />
+<ol class="org-ol">
+<li><a id="org2d1ac12"></a>DynamoDB:<br />
+<ol class="org-ol">
+<li><a id="orgf73cfee"></a>Read:<br />
+<div class="outline-text-8" id="text-1-3-5-2-1-1-1">
+<ul class="org-ul">
+<li>tokens-table</li>
+<li>assignments-table</li>
+<li>scoreboard-table</li>
+</ul>
+</div>
+</li>
+<li><a id="org7d87c03"></a>Write:<br /></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><a id="org7abbe0f"></a>[PROTECTED] getAssignments(token) -&gt; [assignment, &#x2026;]<br />
+<ol class="org-ol">
+<li><a id="org7fe16f2"></a>Assets<br />
+<ol class="org-ol">
+<li><a id="org7a9112c"></a>DynamoDB:<br />
+<ol class="org-ol">
+<li><a id="org00337df"></a>Read:<br />
+<div class="outline-text-8" id="text-1-3-5-3-1-1-1">
+<ul class="org-ul">
+<li>tokens-table</li>
+<li>assignments-table</li>
+</ul>
+</div>
+</li>
+<li><a id="orge901a49"></a>Write:<br /></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><a id="orgc578656"></a>[PROTECTED] getUser(token) -&gt; user<br />
+<div class="outline-text-5" id="text-1-3-5-4">
+<p>
+get user's credentials
+this will be used to determine if the session token is legitimate
+returns {} if invalid
+</p>
+</div>
+<ol class="org-ol">
+<li><a id="org31abd43"></a>Assets<br />
+<ol class="org-ol">
+<li><a id="org18fd34b"></a>DynamoDB:<br />
+<ol class="org-ol">
+<li><a id="org9a5acb5"></a>Read:<br />
+<div class="outline-text-8" id="text-1-3-5-4-1-1-1">
+<ul class="org-ul">
+<li>tokens-table</li>
+<li>users-table</li>
+</ul>
+</div>
+</li>
+<li><a id="org09524c0"></a>Write:<br /></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</div>
+<div id="outline-container-org25017c4" class="outline-4">
+<h4 id="org25017c4"><span class="section-number-4">1.3.6</span> Grading Workflow</h4>
+<div class="outline-text-4" id="text-1-3-6">
+</div>
+<ol class="org-ol">
+<li><a id="org6250fbe"></a>[PRIVATE][SECRET] quarantine(bool, instance-id)<br />
+<div class="outline-text-5" id="text-1-3-6-1">
+<p>
+Set quarantine on the calling asset&#x2026;
+This endpoint/function is essentially the sudo button that we have to hide
+</p>
+</div>
+<ol class="org-ol">
+<li><a id="orga46ff1c"></a>Assets<br />
+<ol class="org-ol">
+<li><a id="org4a45338"></a>EC2:<br />
+<ol class="org-ol">
+<li><a id="org794d40d"></a>Read:<br /></li>
+<li><a id="org377a04b"></a>Write:<br />
+<div class="outline-text-8" id="text-1-3-6-1-1-1-2">
+<ul class="org-ul">
+<li>attach-role to instance</li>
+<li>detach-role from instance</li>
+</ul>
+</div>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org73c302b" class="outline-3">
+<h3 id="org73c302b"><span class="section-number-3">1.4</span> Library Utilities</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+We use environment variables since they are consistent given that we use terraform to provision
+</p>
+</div>
+<div id="outline-container-org8bb3f2e" class="outline-4">
+<h4 id="org8bb3f2e"><span class="section-number-4">1.4.1</span> [LOCAL] getNetId(token) -&gt; string</h4>
+<div class="outline-text-4" id="text-1-4-1">
+</div>
+<ol class="org-ol">
+<li><a id="org99d41f8"></a>Assets<br />
+<ol class="org-ol">
+<li><a id="org232a8c3"></a>DynamoDB:<br />
+<ol class="org-ol">
+<li><a id="org083fa3e"></a>Read:<br />
+<div class="outline-text-8" id="text-1-4-1-0-1-1-1">
+<ul class="org-ul">
+<li>tokens-table</li>
+</ul>
+</div>
+</li>
+<li><a id="org82ff2c0"></a>Write:<br /></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</div>
+<div id="outline-container-orgda2f89e" class="outline-4">
+<h4 id="orgda2f89e"><span class="section-number-4">1.4.2</span> [LOCAL] getTokenId(netid) -&gt; string</h4>
+<div class="outline-text-4" id="text-1-4-2">
+<p>
+getTokenId by retrieving the tokenizedId of this user
+</p>
+</div>
+<ol class="org-ol">
+<li><a id="orge03627e"></a>Constraints:<br />
+<div class="outline-text-5" id="text-1-4-2-1">
+<p>
+Tokenizing by hashing the netid and uin fails since the netid is public information 
+and the uin is within 100,000,000, so it takes 100,000,000 local guesses to brute 
+force 1 user's token.
+Due to this, I've decided to assign tokens by hashing the time that they first logged in 
+and some salt if necessary
+</p>
+</div>
+<ol class="org-ol">
+<li><a id="org60dbd8b"></a>Assets<br />
+<ol class="org-ol">
+<li><a id="org93afc98"></a>DynamoDB:<br />
+<ol class="org-ol">
+<li><a id="orgf76fa89"></a>Read:<br />
+<div class="outline-text-8" id="text-1-4-2-1-1-1-1">
+<ul class="org-ul">
+<li>users-table</li>
+</ul>
+</div>
+</li>
+<li><a id="org074e1d8"></a>Write:<br /></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</div>
+<div id="outline-container-orgb8b4a4a" class="outline-4">
+<h4 id="orgb8b4a4a"><span class="section-number-4">1.4.3</span> [LOCAL] isOwner(token, assetId, assignmentId)</h4>
+<div class="outline-text-4" id="text-1-4-3">
+</div>
+<ol class="org-ol">
+<li><a id="org910f341"></a>Assets<br />
+<ol class="org-ol">
+<li><a id="orgb2ac578"></a>DynamoDB:<br />
+<ol class="org-ol">
+<li><a id="orgecafdc4"></a>Read:<br />
+<div class="outline-text-8" id="text-1-4-3-0-1-1-1">
+<ul class="org-ul">
+<li>tokens-table</li>
+<li>users-table</li>
+<li>submissions-table</li>
+</ul>
+</div>
+</li>
+<li><a id="orgec22675"></a>Write:<br /></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</div>
+<div id="outline-container-orgdc436b3" class="outline-4">
+<h4 id="orgdc436b3"><span class="section-number-4">1.4.4</span> [LOCAL] isAdmin(token)</h4>
+<div class="outline-text-4" id="text-1-4-4">
+</div>
+<ol class="org-ol">
+<li><a id="orgaf17898"></a>Assets<br />
+<ol class="org-ol">
+<li><a id="orgc119e32"></a>DynamoDB:<br />
+<ol class="org-ol">
+<li><a id="orgf4be5dc"></a>Read:<br />
+<div class="outline-text-8" id="text-1-4-4-0-1-1-1">
+<ul class="org-ul">
+<li>tokens-table</li>
+<li>users-table</li>
+</ul>
+</div>
+</li>
+<li><a id="orgf640c8a"></a>Write:<br /></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</div>
+<div id="outline-container-orgec95d0b" class="outline-4">
+<h4 id="orgec95d0b"><span class="section-number-4">1.4.5</span> [LOCAL][PRIVATE] insertDynamoDB(tablename, object) -&gt; bool</h4>
+<div class="outline-text-4" id="text-1-4-5">
+<p>
+This is going to be extremely common
+</p>
+<div class="org-src-container">
+<pre class="src src-python">def insertDynamoDB(tablename, json):
+  client = boto3.client('dynamodb')
+  table_name = os.environ[endpoint]
+  # TODO
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org7a3f1dc" class="outline-4">
+<h4 id="org7a3f1dc"><span class="section-number-4">1.4.6</span> [LOCAL][PRIVATE] retrieveDynamoDB(tablename, object) -&gt; bool</h4>
+<div class="outline-text-4" id="text-1-4-6">
+<p>
+returns {} if successful else None
+</p>
+<div class="org-src-container">
+<pre class="src src-python">def retrieveDynamoDB(tablename, json):
+  client = boto3.client('dynamodb')
+  table_name = os.environ[endpoint]
+  # TODO
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org9013af8" class="outline-3">
+<h3 id="org9013af8"><span class="section-number-3">1.5</span> Callable APIs</h3>
+<div class="outline-text-3" id="text-1-5">
+</div>
+<div id="outline-container-orgf9ba56d" class="outline-4">
+<h4 id="orgf9ba56d"><span class="section-number-4">1.5.1</span> <code>Auth</code></h4>
+<div class="outline-text-4" id="text-1-5-1">
+</div>
+<ol class="org-ol">
+<li><a id="orgb007607"></a>[PUBLIC] login(authorizationCode) -&gt; bearerToken<br /></li>
+<li><a id="org2b6cb31"></a>[PROTECTED] logout(token) -&gt; null<br /></li>
+</ol>
+</div>
+<div id="outline-container-org0426a41" class="outline-4">
+<h4 id="org0426a41"><span class="section-number-4">1.5.2</span> <code>Create</code></h4>
+<div class="outline-text-4" id="text-1-5-2">
+</div>
+<ol class="org-ol">
+<li><a id="orgd9d726d"></a>[PROTECTED] submitAssignment(token, assignmentId, asset)<br /></li>
+<li><a id="org574e7f1"></a>[PROTECTED] createAssignment(token, assignmentName, deploymentPackage, deadline, scoreBreakdown)<br /></li>
+</ol>
+</div>
+<div id="outline-container-orge2ff2ac" class="outline-4">
+<h4 id="orge2ff2ac"><span class="section-number-4">1.5.3</span> <code>Modify Assignment</code></h4>
+<div class="outline-text-4" id="text-1-5-3">
+</div>
+<ol class="org-ol">
+<li><a id="orgf6555aa"></a>[PROTECTED] changeDeadline(token, assignmentId, deadline)<br /></li>
+<li><a id="org7d623bf"></a>[PROTECTED] changeScoring(token, assignmentId, scoreBreakdown)<br /></li>
+<li><a id="org3a3600c"></a>[PROTECTED] changeDeploymentPackage(token, assignmentId, deploymentPackage)<br /></li>
+</ol>
+</div>
+<div id="outline-container-org243dbe2" class="outline-4">
+<h4 id="org243dbe2"><span class="section-number-4">1.5.4</span> <code>Query</code></h4>
+<div class="outline-text-4" id="text-1-5-4">
+</div>
+<ol class="org-ol">
+<li><a id="orge972d18"></a>[PROTECTED] getSubmissions(token, assignmentId) -&gt; [submission, &#x2026;]<br /></li>
+<li><a id="org6ebd939"></a>[PROTECTED] getScoreboard(token, assignmentId) -&gt; [tokenizedSubmission, &#x2026;]<br /></li>
+<li><a id="org04bfa77"></a>[PROTECTED] getAssignments(token) -&gt; [assignment, &#x2026;]<br /></li>
+<li><a id="org0453077"></a>[PROTECTED] getUser(token) -&gt; user<br /></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org12c369b" class="outline-3">
+<h3 id="org12c369b"><span class="section-number-3">1.6</span> Todolist</h3>
+<div class="outline-text-3" id="text-1-6">
+</div>
+<div id="outline-container-org1e5f27f" class="outline-4">
+<h4 id="org1e5f27f"><span class="section-number-4">1.6.1</span> <code>[1/1]</code> APIs</h4>
+<div class="outline-text-4" id="text-1-6-1">
+</div>
+<ol class="org-ol">
+<li><a id="org4b3d61e"></a><span class="done DONE">DONE</span> [PUBLIC] login(authorizationCode) -&gt; bearerToken<br /></li>
+</ol>
+</div>
+<div id="outline-container-org8afb539" class="outline-4">
+<h4 id="org8afb539"><span class="section-number-4">1.6.2</span> <code>[1/1]</code> API Gateway</h4>
+<div class="outline-text-4" id="text-1-6-2">
+</div>
+<ol class="org-ol">
+<li><a id="org064d02e"></a><span class="done DONE">DONE</span> [PUBLIC] login(authorizationCode) -&gt; bearerToken<br /></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-orga55df00" class="outline-2">
+<h2 id="orga55df00"><span class="section-number-2">2</span> Frontend</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org05a6174" class="outline-3">
+<h3 id="org05a6174"><span class="section-number-3">2.1</span> Frames</h3>
+<div class="outline-text-3" id="text-2-1">
+</div>
+<div id="outline-container-orgba599fa" class="outline-4">
+<h4 id="orgba599fa"><span class="section-number-4">2.1.1</span> Scoreboard</h4>
+<div class="outline-text-4" id="text-2-1-1">
+</div>
+<ol class="org-ol">
+<li><a id="orgb1d0c12"></a>API calls<br />
+<ol class="org-ol">
+<li><a id="org3a16b5c"></a>getScoreboard(token, assignmentId)<br /></li>
+</ol>
+</li>
+</ol>
+</div>
+<div id="outline-container-org84338f6" class="outline-4">
+<h4 id="org84338f6"><span class="section-number-4">2.1.2</span> My Submissions</h4>
+<div class="outline-text-4" id="text-2-1-2">
+</div>
+<ol class="org-ol">
+<li><a id="orgb495746"></a>API calls<br />
+<ol class="org-ol">
+<li><a id="org7bc2cc5"></a>getSubmissions(token, assignmentId)<br /></li>
+</ol>
+</li>
+</ol>
+</div>
+<div id="outline-container-orgfbd5540" class="outline-4">
+<h4 id="orgfbd5540"><span class="section-number-4">2.1.3</span> Admin Interface</h4>
+<div class="outline-text-4" id="text-2-1-3">
+</div>
+<ol class="org-ol">
+<li><a id="org31f880d"></a>Build an interface to create assignments<br /></li>
+</ol>
+</div>
+<div id="outline-container-orgb62ab41" class="outline-4">
+<h4 id="orgb62ab41"><span class="section-number-4">2.1.4</span> User Information</h4>
+<div class="outline-text-4" id="text-2-1-4">
+</div>
+<ol class="org-ol">
+<li><a id="org0a83ed5"></a>API calls<br />
+<ol class="org-ol">
+<li><a id="org45f683d"></a>getUser(token)<br /></li>
+</ol>
+</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org0a97480" class="outline-3">
+<h3 id="org0a97480"><span class="section-number-3">2.2</span> Storage</h3>
+<div class="outline-text-3" id="text-2-2">
+</div>
+<div id="outline-container-org5f16623" class="outline-4">
+<h4 id="org5f16623"><span class="section-number-4">2.2.1</span> S3</h4>
+<div class="outline-text-4" id="text-2-2-1">
+</div>
+<ol class="org-ol">
+<li><a id="orgefc23bc"></a>frontend-assets-bucket<br /></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org08f1d3e" class="outline-3">
+<h3 id="org08f1d3e"><span class="section-number-3">2.3</span> Actions</h3>
+<div class="outline-text-3" id="text-2-3">
+</div>
+<div id="outline-container-org6caee06" class="outline-4">
+<h4 id="org6caee06"><span class="section-number-4">2.3.1</span> Submit Assignment</h4>
+<div class="outline-text-4" id="text-2-3-1">
+</div>
+<ol class="org-ol">
+<li><a id="org94cb119"></a>API calls<br />
+<ol class="org-ol">
+<li><a id="orgaf1e834"></a>submitAssignment(token, assignmentId, asset)<br /></li>
+</ol>
+</li>
+</ol>
+</div>
+<div id="outline-container-orgf1eaba2" class="outline-4">
+<h4 id="orgf1eaba2"><span class="section-number-4">2.3.2</span> Create Assignment</h4>
+<div class="outline-text-4" id="text-2-3-2">
+</div>
+<ol class="org-ol">
+<li><a id="orgf76c843"></a>API calls<br />
+<ol class="org-ol">
+<li><a id="orga4fe29f"></a>submitAssignment(token, assignmentId, asset)<br /></li>
+</ol>
+</li>
+</ol>
+</div>
+<div id="outline-container-org4368f35" class="outline-4">
+<h4 id="org4368f35"><span class="section-number-4">2.3.3</span> Select Assignment</h4>
+<div class="outline-text-4" id="text-2-3-3">
+<p>
+Changes currently selected item
+Refreshes currently selected menu
+</p>
+</div>
+</div>
+<div id="outline-container-org60f7e26" class="outline-4">
+<h4 id="org60f7e26"><span class="section-number-4">2.3.4</span> Log out</h4>
+<div class="outline-text-4" id="text-2-3-4">
+</div>
+<ol class="org-ol">
+<li><a id="orgd1361cf"></a>API calls<br />
+<ol class="org-ol">
+<li><a id="org5d98f1a"></a>logout(token)<br /></li>
+</ol>
+</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org990af30" class="outline-3">
+<h3 id="org990af30"><span class="section-number-3">2.4</span> <span class="todo TODO">TODO</span> Provisioning</h3>
+<div class="outline-text-3" id="text-2-4">
+</div>
+<div id="outline-container-orgb4e9502" class="outline-4">
+<h4 id="orgb4e9502"><span class="section-number-4">2.4.1</span> S3 Bucket</h4>
+<div class="outline-text-4" id="text-2-4-1">
+<p>
+frontend-assets-bucket
+</p>
+</div>
+</div>
+<div id="outline-container-org1ef0f81" class="outline-4">
+<h4 id="org1ef0f81"><span class="section-number-4">2.4.2</span> AutoScaling group + Elastic Load Balancer</h4>
+</div>
+<div id="outline-container-org7231a47" class="outline-4">
+<h4 id="org7231a47"><span class="section-number-4">2.4.3</span> Instance Template</h4>
+<div class="outline-text-4" id="text-2-4-3">
+</div>
+<ol class="org-ol">
+<li><a id="org9e7c55c"></a>userdata to pull code and start node webserver<br /></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-org38bbbc1" class="outline-2">
+<h2 id="org38bbbc1"><span class="section-number-2">3</span> Grading Workflow</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org131198b" class="outline-3">
+<h3 id="org131198b"><span class="section-number-3">3.1</span> Security</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+This is the largest security hazard that we have to deal with.
+</p>
+</div>
+<div id="outline-container-org3b54a0b" class="outline-4">
+<h4 id="org3b54a0b"><span class="section-number-4">3.1.1</span> Permissions:</h4>
+<div class="outline-text-4" id="text-3-1-1">
+<p>
+The grading resource needs access to the following(either directly or indirectly):
+</p>
+<ul class="org-ul">
+<li>S3</li>
+<li>DynamoDB</li>
+<li>SQS</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgab732ee" class="outline-4">
+<h4 id="orgab732ee"><span class="section-number-4">3.1.2</span> User Classes:</h4>
+<div class="outline-text-4" id="text-3-1-2">
+</div>
+<ol class="org-ol">
+<li><a id="org91c650a"></a>Instructor<br />
+<ol class="org-ol">
+<li><a id="org07eb048"></a>Read<br />
+<ol class="org-ol">
+<li><a id="org087367b"></a>Local Filesystem<br /></li>
+</ol>
+</li>
+<li><a id="org2f18bea"></a>Write<br />
+<ol class="org-ol">
+<li><a id="orga33cc22"></a>Local Filesystem<br /></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><a id="org859b78c"></a>Student<br />
+<div class="outline-text-5" id="text-3-1-2-2">
+<p>
+No access
+</p>
+</div>
+</li>
+</ol>
+</div>
+<div id="outline-container-org84f7c0b" class="outline-4">
+<h4 id="org84f7c0b"><span class="section-number-4">3.1.3</span> Mitigations:</h4>
+<div class="outline-text-4" id="text-3-1-3">
+</div>
+<ol class="org-ol">
+<li><a id="org086376b"></a>Monitoring<br />
+<div class="outline-text-5" id="text-3-1-3-1">
+<p>
+Monitor abnormally large files. Possibly a CloudWatch event pushing to an SNS notification.
+</p>
+</div>
+</li>
+<li><a id="org52fcc1a"></a>OS Permissions<br />
+<div class="outline-text-5" id="text-3-1-3-2">
+<ul class="org-ul">
+<li>All code is run as a non-privileged user</li>
+</ul>
+</div>
+</li>
+<li><a id="org9b57f03"></a>Firewall<br />
+<div class="outline-text-5" id="text-3-1-3-3">
+<ul class="org-ul">
+<li>Remove internet gateway to prevent data exfiltration</li>
+</ul>
+</div>
+</li>
+<li><a id="org8afac55"></a>IAM Roles<br />
+<div class="outline-text-5" id="text-3-1-3-4">
+<ul class="org-ul">
+<li>Invoke lambdas to assign and remove necessary permissions from the box as it needs them.
+Reduce the AWS permissions that the box has access to as the non privileged user runs 
+his code and return them in privileged mode.</li>
+</ul>
+</div>
+</li>
+<li><a id="orge3cb33e"></a>[PRIVATE][SECRET] quarantine(bool, instance-id)<br />
+<div class="outline-text-5" id="text-3-1-3-5">
+<p>
+Set quarantine on the calling asset&#x2026;
+This endpoint/function is essentially the sudo button that we have to hide
+</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org008da22" class="outline-3">
+<h3 id="org008da22"><span class="section-number-3">3.2</span> Constraints</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+1 grading job at a time per instance, due to quarantine race conditions.
+</p>
+</div>
+</div>
+<div id="outline-container-org2a9fe19" class="outline-3">
+<h3 id="org2a9fe19"><span class="section-number-3">3.3</span> Grading AMI</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+In order to perform our security role in this manner, we must provide features
+</p>
+</div>
+<div id="outline-container-org2a9ac08" class="outline-4">
+<h4 id="org2a9ac08"><span class="section-number-4">3.3.1</span> gcc</h4>
+</div>
+<div id="outline-container-org446923b" class="outline-4">
+<h4 id="org446923b"><span class="section-number-4">3.3.2</span> python</h4>
+</div>
+<div id="outline-container-orgc2857d5" class="outline-4">
+<h4 id="orgc2857d5"><span class="section-number-4">3.3.3</span> make</h4>
+</div>
+</div>
+<div id="outline-container-org1a000dd" class="outline-3">
+<h3 id="org1a000dd"><span class="section-number-3">3.4</span> Filesystem Layout</h3>
+<div class="outline-text-3" id="text-3-4">
+</div>
+<div id="outline-container-orgc54d31c" class="outline-4">
+<h4 id="orgc54d31c"><span class="section-number-4">3.4.1</span> Environment</h4>
+<div class="outline-text-4" id="text-3-4-1">
+<p>
+/deploy/quarantine.py
+/deploy/cloudgrade.sh
+<i>deploy/uploadScores.py
+/deploy/package.zip -&gt; /deploy/package</i>
+</p>
+</div>
+</div>
+<div id="outline-container-orgcccfed0" class="outline-4">
+<h4 id="orgcccfed0"><span class="section-number-4">3.4.2</span> DeploymentPackage.zip format</h4>
+<div class="outline-text-4" id="text-3-4-2">
+<p>
+package/
+package/deploy.sh -&gt; 
+  should generate:
+    package/score.json
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org98562a3" class="outline-3">
+<h3 id="org98562a3"><span class="section-number-3">3.5</span> [PRIVATE][ABSTRACT] gradingWorkflow(netid, assignmentId, assetId)</h3>
+<div class="outline-text-3" id="text-3-5">
+<p>
+This grading workflow is run on a kubernetes cluster with docker containers running nodejs fetching jobs
+from an AWS SQS queue. TODO have to make it so if a machine keels over, the asset still gets graded.
+</p>
+</div>
+
+<div id="outline-container-org7c0c86b" class="outline-4">
+<h4 id="org7c0c86b"><span class="section-number-4">3.5.1</span> Custom grading AMI</h4>
+<div class="outline-text-4" id="text-3-5-1">
+<p>
+In order to avoid extensive instructor permission, we will be using custom grading amis
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">build assets:
+- gcc
+- g++
+- make
+- gnu coreutils
+grading assets:
+- aws-cli
+- python
+- python-boto3
+users:
+- user #unprivileged user
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org8b455f1" class="outline-4">
+<h4 id="org8b455f1"><span class="section-number-4">3.5.2</span> FETCH step</h4>
+<div class="outline-text-4" id="text-3-5-2">
+<div class="org-src-container">
+<pre class="src src-javascript">const endpoints = configuration-table['HARDCODED-CRN']; // TODO Generalize
+const submissionsTable = endpoints['submissions-table'];
+const documentsBucket = endpoints['documents-bucket'];
+const gradingQueue = endpoints['grading-queue'];
+
+// to get job information
+const job = gradingQueue.retrieveJob()
+gradingQueue.sendReceipt()
+/*
+// job:
+ {
+   "netid": "$netid",
+   "assignmentId": "$assignmentId",
+   "assetId": "$assetId"
+ }
+*/
+
+const submission = submissionsTable[assetId];
+const deployPackage = 'documents-bucket/' + submissions-table[assetId].assignmentId + '/deployPackage.zip'
+const asset = 'documents-bucket/' + submissions-table[assetId].assignmentId + '/' + submission.assetId;
+retrieveAssets(deployPackage); // downloads the testing package
+retrieveAssets(asset); // downloads the asset to be evaluated
+executeGradingScript('/deploy/cloudgrade.sh', job) // kicks off the grading script to generate ./package/score.json and then will call a script to upload the scores
+// job is not private data
+// SHELL CMDLINE arguments are visible to users
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org899230a" class="outline-4">
+<h4 id="org899230a"><span class="section-number-4">3.5.3</span> EXECUTE step</h4>
+<div class="outline-text-4" id="text-3-5-3">
+<div class="org-src-container">
+<pre class="src src-bash">#!/bin/bash
+#filename: /deploy/cloudgrade.sh
+# STORE ENDPOINTS
+cd /deploy/
+# set ./deploy/package owner to user
+# will cause this package to get reaped after upload
+chgrp user ./package -R
+chown user ./package -R
+chmod 700 ./package -R
+
+cd ./package
+sudo -u user ./deploy.sh
+cd /deploy
+
+# "/deploy/package/score.json" contains the score that should match the scoreBreakdown object
+./uploadScores.py "$1" "$(cat ./package/score.json)"
+
+# clean up all files by user to maintain the clean state
+find / -user 'user' -exec rm -fr {} \;
+
+exit
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org1e84273" class="outline-4">
+<h4 id="org1e84273"><span class="section-number-4">3.5.4</span> WRITEBACK step</h4>
+<div class="outline-text-4" id="text-3-5-4">
+</div>
+<ol class="org-ol">
+<li><a id="orgc2ec5b6"></a>uploadScores.py(job, score)<br />
+<div class="outline-text-5" id="text-3-5-4-1">
+<p>
+submissionsTableEndpoint is required and can be retrieved from the configuration-table
+insert the score and scoreBreakdown and 'SCORED' into the submissions-table[assetId]
+</p>
+<div class="org-src-container">
+<pre class="src src-javascript">// package/score.json
+{
+  "score": 100,
+  "scoreBreakdown": {
+    // these are user defined and are up to the user to keep coherent
+    "some_field": 100,
+    "other_field": 100,
+    "my_field": 100,
+    "field": 100,
+    "feld": 100
+  }
+}
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgc36fed9" class="outline-3">
+<h3 id="orgc36fed9"><span class="section-number-3">3.6</span> <span class="todo TODO">TODO</span> Todolist</h3>
+<div class="outline-text-3" id="text-3-6">
+</div>
+<div id="outline-container-org04d6c13" class="outline-4">
+<h4 id="org04d6c13"><span class="section-number-4">3.6.1</span> <span class="done DONE">DONE</span> Provisioning</h4>
+<div class="outline-text-4" id="text-3-6-1">
+</div>
+<ol class="org-ol">
+<li><a id="orga94cb6e"></a>Grading AMI<br /></li>
+<li><a id="org99f10ea"></a>Subnet<br /></li>
+<li><a id="orga021951"></a>Instance Template<br />
+<ol class="org-ol">
+<li><a id="org3d654ee"></a>Security Groups<br /></li>
+</ol>
+</li>
+<li><a id="orgab98873"></a>AutoScaling group + Elastic Load Balancer<br /></li>
+<li><a id="org58561b9"></a><code>[0/2]</code> IAM roles<br />
+<ol class="org-ol">
+<li><a id="org009fdaa"></a><span class="todo TODO">TODO</span> [EC2] Quarantine Invoke Role<br /></li>
+<li><a id="org0a05b17"></a><span class="todo TODO">TODO</span> [EC2] UnQuarantined Role<br /></li>
+</ol>
+</li>
+</ol>
+</div>
+<div id="outline-container-orgf8c2871" class="outline-4">
+<h4 id="orgf8c2871"><span class="section-number-4">3.6.2</span> <span class="done DONE">DONE</span> Grading AMI</h4>
+</div>
+<div id="outline-container-org179ffc7" class="outline-4">
+<h4 id="org179ffc7"><span class="section-number-4">3.6.3</span> <span class="done DONE">DONE</span> [EXAMPLE]DeploymentPackage.zip</h4>
+</div>
+<div id="outline-container-org0fad855" class="outline-4">
+<h4 id="org0fad855"><span class="section-number-4">3.6.4</span> <span class="done DONE">DONE</span> retrieveAssets.py</h4>
+</div>
+<div id="outline-container-orgd31fa57" class="outline-4">
+<h4 id="orgd31fa57"><span class="section-number-4">3.6.5</span> <span class="done DONE">DONE</span> quarantine.py</h4>
+</div>
+<div id="outline-container-org8d81b7d" class="outline-4">
+<h4 id="org8d81b7d"><span class="section-number-4">3.6.6</span> <span class="done DONE">DONE</span> cloudgrade.sh</h4>
+</div>
+<div id="outline-container-org698bc57" class="outline-4">
+<h4 id="org698bc57"><span class="section-number-4">3.6.7</span> <span class="done DONE">DONE</span> uploadScores.py</h4>
+</div>
+<div id="outline-container-org42e0792" class="outline-4">
+<h4 id="org42e0792"><span class="section-number-4">3.6.8</span> <span class="todo TODO">TODO</span> Monitoring CloudWatch Events</h4>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf5fd1f5" class="outline-2">
+<h2 id="orgf5fd1f5"><span class="section-number-2">4</span> <code>[1/1]</code> Knowledge Gaps</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li class="on"><code>[X]</code> OAuth implementation</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge78ad18" class="outline-2">
+<h2 id="orge78ad18"><span class="section-number-2">5</span> Reach Goals</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-orgcd06a0b" class="outline-3">
+<h3 id="orgcd06a0b"><span class="section-number-3">5.1</span> Hidden Assignments for DEV/Prototyping</h3>
+</div>
+<div id="outline-container-org8ac9d9e" class="outline-3">
+<h3 id="org8ac9d9e"><span class="section-number-3">5.2</span> Deleting Assignments</h3>
+</div>
+<div id="outline-container-org1b1be3b" class="outline-3">
+<h3 id="org1b1be3b"><span class="section-number-3">5.3</span> Using user data to populate scripts into Grading Workflow Instance Template</h3>
+<div class="outline-text-3" id="text-5-3">
+</div>
+<div id="outline-container-org78dbd8a" class="outline-4">
+<h4 id="org78dbd8a"><span class="section-number-4">5.3.1</span> Makes it more modular and faster to update scripts</h4>
+</div>
+</div>
+<div id="outline-container-org464c410" class="outline-3">
+<h3 id="org464c410"><span class="section-number-3">5.4</span> <code>[0/3]</code> Reach Goals</h3>
+<div class="outline-text-3" id="text-5-4">
+</div>
+<div id="outline-container-org260c700" class="outline-4">
+<h4 id="org260c700"><span class="section-number-4">5.4.1</span> <span class="todo TODO">TODO</span> [PROTECTED] changeScoring(token, assignmentId, scoreBreakdown)</h4>
+</div>
+<div id="outline-container-org12c2991" class="outline-4">
+<h4 id="org12c2991"><span class="section-number-4">5.4.2</span> <span class="todo TODO">TODO</span> [PROTECTED] changeDeploymentPackage(token, assignmentId, deploymentPackage)</h4>
+</div>
+<div id="outline-container-org5df9267" class="outline-4">
+<h4 id="org5df9267"><span class="section-number-4">5.4.3</span> <span class="todo TODO">TODO</span> [UNNECESSARY][PROTECTED] continueSession(token) -&gt; bool</h4>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Kyle Dixler</p>
+<p class="date">Created: 2019-01-31 Thu 08:56</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
